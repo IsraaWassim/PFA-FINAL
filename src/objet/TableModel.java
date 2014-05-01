@@ -10,7 +10,7 @@ import javax.swing.table.AbstractTableModel;
 public class TableModel extends AbstractTableModel
 {
     private static final long serialVersionUID = 6105842825518764825L;
-    private ArrayList<Appartemment> AppartemmentList;
+    private ArrayList<Appartemment> appartements;
 
     public TableModel()
     {
@@ -28,7 +28,7 @@ public class TableModel extends AbstractTableModel
 
     public int getRowCount()
     {
-        return AppartemmentList.size();
+        return appartements.size();
     }
 
     public int getColumnCount()
@@ -38,7 +38,7 @@ public class TableModel extends AbstractTableModel
 
     public Object getValueAt(int rowIndex, int columnIndex)
     {
-    	Appartemment p=AppartemmentList.get(rowIndex);
+    	Appartemment p=appartements.get(rowIndex);
         Object[] values=new Object[]{p.getProprietaire(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getAscenseur(),p.getSurface(),p.getStatut(),p.getEtage(),p.getIdAppartement()};
         System.out.println(values[columnIndex]);
         return values[columnIndex];

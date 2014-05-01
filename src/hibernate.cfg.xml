@@ -19,7 +19,6 @@
 <mapping class="objet.Client"/> 
 <mapping class="objet.Appartemment"/>
 <mapping class="objet.Proprietaire"/>
-<mapping class="objet.Appartemment"/>
 <mapping class="objet.Maison"/>
 <mapping class="objet.CentreCommercial"/> 
 <mapping class="objet.Terrain"/>

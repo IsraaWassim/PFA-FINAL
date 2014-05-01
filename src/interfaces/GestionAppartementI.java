@@ -38,10 +38,12 @@ import objet.TableModel;
 
 public class GestionAppartementI extends JFrame {
 	
+    
+	private JTextField prix;
+	
+	TableModel model ;
     JPanel contentPane;
 	JTable table;
-	private JTextField prix;
-	TableModel model ;
 
 	
 
@@ -127,8 +129,7 @@ public class GestionAppartementI extends JFrame {
 		//table.setBackground(SystemColor.control);
 		//table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		 TableModel model = new TableModel();
-		 JTable table = new JTable(model);
-	
+		 table = new JTable(model);
 		 JScrollPane scrollPane = new JScrollPane(table);
 		 scrollPane.setBounds(10, 55, 636, 187);
 		contentPane.add(scrollPane);
