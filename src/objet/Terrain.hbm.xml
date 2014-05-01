@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 mai 2014 22:24:57 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="objet.Terrain" table="TERRAIN">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="surface" type="java.lang.String">
+            <column name="SURFACE" />
+        </property>
+        <property name="prix" type="java.lang.String">
+            <column name="PRIX" />
+        </property>
+        <property name="ville" type="java.lang.String">
+            <column name="VILLE" />
+        </property>
+        <property name="rue" type="java.lang.String">
+            <column name="RUE" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <property name="statut" type="java.lang.String">
+            <column name="STATUT" />
+        </property>
+    </class>
+</hibernate-mapping>

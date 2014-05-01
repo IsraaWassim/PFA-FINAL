@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import objet.Appartemment;
+import objet.HibernateUtil;
 import objet.Proprietaire;
 
 import org.hibernate.Query;

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 mai 2014 22:24:57 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="objet.Client" table="CLIENT">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="typeClient" type="java.lang.String">
+            <column name="TYPECLIENT" />
+        </property>
+        <property name="typeBien" type="java.lang.String" access="field">
+            <column name="TYPEBIEN" />
+        </property>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="PRENOM" />
+        </property>
+        <property name="cin" type="java.lang.String">
+            <column name="CIN" />
+        </property>
+        <property name="mail" type="java.lang.String">
+            <column name="MAIL" />
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="TEL" />
+        </property>
+    </class>
+</hibernate-mapping>
