@@ -131,7 +131,8 @@ public class GestionAppartementI extends JFrame {
 
 		 JScrollPane scrollPane = new JScrollPane(table);
 		 scrollPane.setBounds(10, 55, 636, 187);
-		contentPane.add(scrollPane);
+		 contentPane.add(scrollPane);
+//		 contentPane.add(scrollPane);
 
 
 
@@ -173,7 +174,7 @@ public class GestionAppartementI extends JFrame {
 						.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
 						.addComponent(button, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
 					.addGap(91)
-					.addComponent(table, GroupLayout.PREFERRED_SIZE, 793, GroupLayout.PREFERRED_SIZE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 793, GroupLayout.PREFERRED_SIZE)
 					.addGap(74))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(162)
@@ -203,7 +204,7 @@ public class GestionAppartementI extends JFrame {
 							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
 							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-						.addComponent(table, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(138, Short.MAX_VALUE))
 		);
 

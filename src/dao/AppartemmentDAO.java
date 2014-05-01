@@ -19,8 +19,7 @@ public class AppartemmentDAO {
 	SessionFactory sf;
 
 	public AppartemmentDAO() {
-//		sf = new AnnotationConfiguration().configure().buildSessionFactory();
-//		session = sf.openSession();
+		session = HibernateUtil.getSessionFactory().openSession();
 	}
 
 	public void save(Appartemment a) {
@@ -42,32 +41,15 @@ public class AppartemmentDAO {
 	}
 
 	public List<Appartemment> getAllAppartement() {
-//		Configuration config = new Configuration();
-//		config.addClass(Appartemment.class);
-//		config.addClass(Proprietaire.class);
-//		config.configure();
-
-//		SessionFactory sessionFactory = config.buildSessionFactory();
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-		Session session = sessionFactory.openSession();
-
-		Session session1 = HibernateUtil.getSessionFactory().openSession();
-
-		session1.beginTransaction();
-		try {
-			Query query = session1.createQuery("from Appartement");
-			List<Appartemment> list= query.list();
-			System.out.println(list.toString());
-			return list;
-		} finally {
-			session1.close();
-			sessionFactory.close();
-		}
-
-//		List<Appartemment> list = session.createQuery("from objet.Appartement")
-//				.list();
+//		ze
+		session.beginTransaction();
+		Query query = session.createQuery("from Appartemment");
+		List<Appartemment> list= query.list();
+		System.out.println(list.toString());
+		return list;
 
 	}
+
 
 	/*
 	 * public List<Adresse> getClient() { List<Client>
