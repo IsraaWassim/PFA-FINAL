@@ -25,12 +25,17 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.UIManager;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AjouterMaisonI extends JFrame {
 
@@ -83,7 +88,7 @@ public class AjouterMaisonI extends JFrame {
 		lblAjouterMaison.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Les coordonn\u00E9es de client :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Les coordonn\u00E9es de propri\u00E9taire :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Nom:");
@@ -94,13 +99,16 @@ public class AjouterMaisonI extends JFrame {
 		cin.setBackground(SystemColor.inactiveCaptionBorder);
 		cin.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_1 = new JLabel("E-Mail :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -126,13 +134,6 @@ public class AjouterMaisonI extends JFrame {
 		JLabel label_3 = new JLabel("CIN :");
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JLabel label_4 = new JLabel("Type de client :");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Locataire", "Proprietaire", "Acheteur"}));
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
 		JLabel label_5 = new JLabel("T\u00E9l\u00E8phone :");
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -141,13 +142,16 @@ public class AjouterMaisonI extends JFrame {
 		tel.setBackground(SystemColor.inactiveCaptionBorder);
 		tel.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		prenom = new JTextField();
 		
 		prenom.setColumns(10);
@@ -164,36 +168,28 @@ public class AjouterMaisonI extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 1045, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(25)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(25)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGap(81)
+							.addComponent(label)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(81)
-									.addComponent(label)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-										.addGroup(gl_panel.createSequentialGroup()
-											.addComponent(cin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-											.addGap(45)
-											.addComponent(label_1)
-											.addGap(29)
-											.addComponent(mail, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED))
-										.addGroup(gl_panel.createSequentialGroup()
-											.addGap(65)
-											.addComponent(nom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-											.addComponent(label_2)
-											.addGap(27))))
-								.addComponent(label_3)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(375)
-							.addComponent(label_4)
-							.addGap(47)
-							.addComponent(comboBox, 0, 134, Short.MAX_VALUE)))
+									.addComponent(cin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+									.addGap(45)
+									.addComponent(label_1)
+									.addGap(29)
+									.addComponent(mail, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(65)
+									.addComponent(nom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(label_2)
+									.addGap(27))))
+						.addComponent(label_3))
 					.addGap(35)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
@@ -205,13 +201,8 @@ public class AjouterMaisonI extends JFrame {
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 224, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_4)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+					.addGap(52)
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addComponent(prenom, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -235,8 +226,7 @@ public class AjouterMaisonI extends JFrame {
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Les caract\u00E9ristiques de la maison :", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setBackground(Color.WHITE);
 		
-		JLabel label_6 = new JLabel("Description :");
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
 		
 		JTextArea description = new JTextArea();
 		description.setBackground(SystemColor.inactiveCaptionBorder);
@@ -257,13 +247,16 @@ public class AjouterMaisonI extends JFrame {
 		surface.setBackground(SystemColor.inactiveCaptionBorder);
 		surface.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		
 		JLabel lblJardin = new JLabel("Jardin:");
 		lblJardin.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -276,25 +269,31 @@ public class AjouterMaisonI extends JFrame {
 		codepostal.setBackground(SystemColor.inactiveCaptionBorder);
 		codepostal.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		prix = new JTextField();
 		prix.setColumns(10);
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
 		prix.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_12 = new JLabel("Rue :");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -306,13 +305,16 @@ public class AjouterMaisonI extends JFrame {
 		etage.setBackground(SystemColor.inactiveCaptionBorder);
 		etage.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		rue = new JTextField();
 		rue.setColumns(10);
 		rue.setBackground(SystemColor.inactiveCaptionBorder);
@@ -325,20 +327,9 @@ public class AjouterMaisonI extends JFrame {
 	              evt.consume(); 
 			}
 		});
-		JRadioButton ouijardin = new JRadioButton("oui");
-		ouijardin.setBackground(Color.WHITE);
-		
-		JRadioButton nonjardin = new JRadioButton("non");
-		nonjardin.setBackground(Color.WHITE);
 		
 		JLabel lblChambre = new JLabel("Garage :");
 		lblChambre.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		JRadioButton nongarage = new JRadioButton("non");
-		nongarage.setBackground(Color.WHITE);
-		
-		JRadioButton ouigarage = new JRadioButton("oui");
-		ouigarage.setBackground(Color.WHITE);
 		
 		JLabel lblChambre_1 = new JLabel("Chambre :");
 		lblChambre_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -348,13 +339,20 @@ public class AjouterMaisonI extends JFrame {
 		chambre.setBackground(SystemColor.inactiveCaptionBorder);
 		chambre.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1|| car>9))
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
+		
+		JCheckBox jardin = new JCheckBox("");
+		
+		JCheckBox garage = new JCheckBox("");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -372,13 +370,11 @@ public class AjouterMaisonI extends JFrame {
 								.addComponent(label_8)
 								.addComponent(lblJardin))
 							.addGap(62)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(boxville, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(ouijardin)
-									.addGap(61)
-									.addComponent(nonjardin))
-								.addComponent(surface, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(jardin)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(boxville, Alignment.TRAILING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(surface, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_1.createSequentialGroup()
 									.addGap(17)
@@ -389,13 +385,10 @@ public class AjouterMaisonI extends JFrame {
 										.addComponent(lblChambre)
 										.addComponent(label_11))))
 							.addGap(57)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(ouigarage, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-									.addGap(40)
-									.addComponent(nongarage, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(codepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(prix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+								.addComponent(prix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addComponent(garage))
 							.addGap(58)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(label_12)
@@ -432,18 +425,17 @@ public class AjouterMaisonI extends JFrame {
 					.addGap(18)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-								.addComponent(ouigarage)
-								.addComponent(ouijardin)
-								.addComponent(lblJardin)
-								.addComponent(lblChambre_1)
-								.addComponent(nonjardin)
-								.addComponent(nongarage)
-								.addComponent(lblChambre))
-							.addGap(7))
-						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(chambre, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)))
+							.addPreferredGap(ComponentPlacement.UNRELATED))
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(jardin)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+									.addComponent(lblJardin)
+									.addComponent(lblChambre_1)
+									.addComponent(lblChambre)
+									.addComponent(garage)))
+							.addGap(7)))
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(description, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
 						.addGroup(gl_panel_1.createSequentialGroup()
@@ -454,6 +446,44 @@ public class AjouterMaisonI extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 		
 		JButton btnajouter = new JButton("Ajouter ");
+		btnajouter.addActionListener(new ActionListener() {
+public void actionPerformed(ActionEvent arg0) {
+				
+				
+				if(rue.getText().equals("") || codepostal.getText().equals("") || surface.getText().equals("") || prix.getText().equals("") || description.getText().equals(""))
+				{  
+					JOptionPane.showMessageDialog(null, "verifiez les champs s'il vous plait !!");
+				}
+				else{
+				
+					 
+					 String y=villebox.getSelectedItem().toString();
+					 String z=StatutBox.getSelectedItem().toString();
+					 
+			     
+				    
+			      CentreCommercialDAO adao=new CentreCommercialDAO();
+			      ProprietaireDAO pdao=new ProprietaireDAO();
+			      CentreCommercial ap=new CentreCommercial( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
+Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
+ap.setProprietaire(pr);
+adao.save(ap);
+//Pour vider les champs
+codepostal.setText(null);
+surface.setText(null);
+prix.setText(null);
+description.setText(null);
+rue.setText(null);
+tel.setText(null);
+mail.setText(null);
+cin.setText(null);
+prenom.setText(null);
+nom.setText(null);
+
+				JOptionPane.showMessageDialog(null, "Centre Commercial & Proprietaire  ajoutés avec succés !");
+				    }
+			}
+		});
 		btnajouter.setIcon(new ImageIcon(AjouterMaisonI.class.getResource("/Images/edit_add.png")));
 		btnajouter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

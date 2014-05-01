@@ -30,6 +30,8 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.DefaultComboBoxModel;
 
@@ -108,7 +110,15 @@ public class AjouterCentreCommercialI extends JFrame {
 		nom = new JTextField();
 		nom.setColumns(10);
 		nom.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		nom.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		JLabel label_2 = new JLabel("Pr\u00E9nom :");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -121,10 +131,30 @@ public class AjouterCentreCommercialI extends JFrame {
 		tel = new JTextField();
 		tel.setColumns(10);
 		tel.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		tel.addKeyListener(new KeyAdapter() {
+			@Override
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		prenom = new JTextField();
 		prenom.setColumns(10);
 		prenom.setBackground(SystemColor.inactiveCaptionBorder);
+		prenom.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -191,7 +221,15 @@ public class AjouterCentreCommercialI extends JFrame {
 		
 		 description = new JTextArea();
 		description.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		description.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		JLabel label_7 = new JLabel("Ville :");
 		label_7.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -199,31 +237,75 @@ public class AjouterCentreCommercialI extends JFrame {
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 villebox = new JComboBox(new Object[]{});
-		
+		 villebox.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		 villebox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+
 		JLabel label_9 = new JLabel("Code Postal :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		surface = new JTextField();
 		surface.setColumns(10);
 		surface.setBackground(SystemColor.inactiveCaptionBorder);
-		
+        surface.addKeyListener(new KeyAdapter() {
+			@Override
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_10 = new JLabel("Prix :");
 		label_10.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		codepostal = new JTextField();
 		codepostal.setColumns(10);
 		codepostal.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		codepostal.addKeyListener(new KeyAdapter() {
+			@Override
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_11 = new JLabel("Rue :");
 		label_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		prix = new JTextField();
 		prix.setColumns(10);
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		prix.addKeyListener(new KeyAdapter() {
+			@Override
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		rue = new JTextField();
 		rue.setColumns(10);
 		rue.setBackground(SystemColor.inactiveCaptionBorder);
+		rue.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		
 		JLabel lblStatut = new JLabel("Statut :");
 		lblStatut.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -331,9 +413,19 @@ public class AjouterCentreCommercialI extends JFrame {
 			      ProprietaireDAO pdao=new ProprietaireDAO();
 			      CentreCommercial ap=new CentreCommercial( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
 Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
+ap.setProprietaire(pr);
 adao.save(ap);
-pdao.save(pr);
-
+//Pour vider les champs
+codepostal.setText(null);
+surface.setText(null);
+prix.setText(null);
+description.setText(null);
+rue.setText(null);
+tel.setText(null);
+mail.setText(null);
+cin.setText(null);
+prenom.setText(null);
+nom.setText(null);
 
 				JOptionPane.showMessageDialog(null, "Centre Commercial & Proprietaire  ajoutés avec succés !");
 				    }

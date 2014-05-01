@@ -37,15 +37,13 @@ import javax.swing.UIManager;
 import objet.TableModel;
 
 public class GestionAppartementI extends JFrame {
-	
-    
-	private JTextField prix;
-	
-	TableModel model ;
+
     JPanel contentPane;
 	JTable table;
+	private JTextField prix;
+	TableModel model ;
 
-	
+
 
 	/**
 	 * Launch the application.
@@ -92,11 +90,11 @@ public class GestionAppartementI extends JFrame {
 					.addContainerGap()
 					.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		
+
 		JLabel lblGestionDesAppartement = new JLabel("Gestion des Appartements ");
 		lblGestionDesAppartement.setIcon(new ImageIcon(GestionAppartementI.class.getResource("/Images/logo-appartement.jpg")));
 		lblGestionDesAppartement.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-		
+
 		JButton button = new JButton("Ajouter ");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -106,7 +104,7 @@ public class GestionAppartementI extends JFrame {
 		});
 		button.setIcon(new ImageIcon(GestionAppartementI.class.getResource("/Images/edit_add.png")));
 		button.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -116,28 +114,29 @@ public class GestionAppartementI extends JFrame {
 		});
 		btnModifier.setIcon(new ImageIcon(GestionAppartementI.class.getResource("/Images/modifier.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setIcon(new ImageIcon(GestionAppartementI.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Recherche Rapide :", TitledBorder.LEADING, TitledBorder.TOP, null, SystemColor.desktop));
 		panel_1.setBackground(Color.WHITE);
-		
-		
+
+
 		//table.setBackground(SystemColor.control);
 		//table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		 TableModel model = new TableModel();
-		 table = new JTable(model);
+		 model = new TableModel();
+		 JTable table = new JTable(model);
+
 		 JScrollPane scrollPane = new JScrollPane(table);
 		 scrollPane.setBounds(10, 55, 636, 187);
 		contentPane.add(scrollPane);
-	
-		
 
-		
-		
+
+
+
+
 //		table.setModel(tableModel);
 		//table.setModel(new TableModel());
 		//	JScrollPane pane= new 	JScrollPane(table);
@@ -207,23 +206,23 @@ public class GestionAppartementI extends JFrame {
 						.addComponent(table, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(138, Short.MAX_VALUE))
 		);
-		
+
 		JLabel lblPrix = new JLabel("Prix :");
 		lblPrix.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
+
 		prix = new JTextField();
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
 		prix.setColumns(10);
-		
+
 		JLabel lblVille = new JLabel("Ville :");
 		lblVille.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+
 		JButton btnFiltrer = new JButton("");
 		btnFiltrer.setIcon(new ImageIcon(GestionAppartementI.class.getResource("/Images/rechercher.gif")));
 		btnFiltrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
+
 		JComboBox villebox = new JComboBox();
-		
+
 		JLabel lblFiltrer = new JLabel("Filtrer");
 		lblFiltrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
