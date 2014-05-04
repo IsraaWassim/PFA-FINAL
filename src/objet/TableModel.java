@@ -5,6 +5,7 @@ package objet;
 
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
 import dao.AppartemmentDAO;
@@ -19,6 +20,7 @@ public class TableModel extends AbstractTableModel
         super();
         AppartemmentDAO appartemmentDAO = new AppartemmentDAO();
         appartemmentList = appartemmentDAO.getAllAppartement();
+       
 //        SessionFactory sf=new Configuration().configure().buildSessionFactory();
 //        Session session=sf.openSession();
 //
@@ -37,14 +39,14 @@ public class TableModel extends AbstractTableModel
 
     public int getColumnCount()
     {
-        return 11;
+        return 12;
     }
 
     public Object getValueAt(int rowIndex, int columnIndex)
     {
     	Appartemment p=appartemmentList.get(rowIndex);
-        Object[] values=new Object[]{p.getProprietaire(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getAscenseur(),p.getSurface(),p.getStatut(),p.getEtage(),p.getIdAppartement()};
-        System.out.println(values[columnIndex]);
+    	Object[] values=new Object[]{p.getIdProprietaire(),p.getIdAppartement(),p.getProprietaire().getNom()+" "+ p.getProprietaire().getPrenom(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getAscenseur(),p.getSurface(),p.getStatut(),p.getEtage(),p.getIdAppartement()};
+        System.out.println(values.length);
         return values[columnIndex];
         
     }
@@ -52,7 +54,7 @@ public class TableModel extends AbstractTableModel
     @Override
     public String getColumnName(int column)
     {
-        String[] columnNames=new String[]{"Id Proprietaire","Description","Prix","Ville","Rue","Code Postal","Ascenseur","Surface","Statut","Etage","Id Apparetemment"};
+        String[] columnNames=new String[]{"Id Proprietaire","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Ascenseur","Surface","Statut","Etage","Id Apparetemment"};
         return columnNames[column];
     }
 }

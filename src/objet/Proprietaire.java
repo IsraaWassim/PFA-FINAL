@@ -19,12 +19,13 @@ public class Proprietaire {
 	String prenom;
 	String cin;
 	String mail;
-	
 	String tel;
 	
 	@OneToMany(mappedBy = "proprietaire")
 	private List<Appartemment> appartements;
 	
+	@OneToMany(mappedBy = "proprietaire")
+	private List<CentreCommercial> centre;
 	
 	public int getIdProprietaire() {
 		return idProprietaire;
@@ -92,10 +93,26 @@ public class Proprietaire {
 
 	}
 
+
 	public List<Appartemment> getAppartements() {
 		return appartements;
 	}
 
 	public void setAppartements(List<Appartemment> appartements) {
 		this.appartements = appartements;
-	}}
+	}
+	/*
+	public List<CentreCommercial> getCentre() {
+		return centre;
+	}
+
+	public void setCentre(List<CentreCommercial> centre) {
+		this.centre = centre;
+	}
+	
+	
+	*/
+	
+	
+	
+}

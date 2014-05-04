@@ -126,8 +126,8 @@ public class GestionMaisonI extends JFrame {
 		JButton ajouter = new JButton("Ajouter ");
 		ajouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterMaisonI m = new AjouterMaisonI();
-				m.setVisible(true);
+			//	AjouterMaisonI m = new AjouterMaisonI();
+			//	m.setVisible(true);
 			}
 		});
 		ajouter.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/edit_add.png")));

@@ -12,9 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="appartemment")
 public class Appartemment {
-	@GeneratedValue
+	
 	@Id	
+	@GeneratedValue
 	int idAppartement;
+
 	String description;
 	String prix;
     String ville;
@@ -27,11 +29,17 @@ public class Appartemment {
     
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idProprietaire")
-    Proprietaire proprietaire;
+	Proprietaire proprietaire;
     
+	public int getIdProprietaire() {
+		return proprietaire.getIdProprietaire();
+	}
+	
+
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
+
 
 
 

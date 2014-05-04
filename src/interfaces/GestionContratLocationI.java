@@ -111,8 +111,8 @@ public class GestionContratLocationI extends JFrame {
 		table.setBackground(SystemColor.menu);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(426, Short.MAX_VALUE)
 					.addComponent(lblGestionDesContrats, GroupLayout.PREFERRED_SIZE, 473, GroupLayout.PREFERRED_SIZE)
 					.addGap(221))
@@ -120,8 +120,8 @@ public class GestionContratLocationI extends JFrame {
 					.addGap(30)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnEcrire, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnEcrire, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
 					.addGap(71)
 					.addComponent(table, GroupLayout.PREFERRED_SIZE, 793, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(84, Short.MAX_VALUE))
@@ -140,7 +140,7 @@ public class GestionContratLocationI extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
 							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
 						.addComponent(table, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(215, Short.MAX_VALUE))
+					.addContainerGap(195, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 		 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

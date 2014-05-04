@@ -29,6 +29,8 @@ import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EcrireContratAchat extends JFrame {
 
@@ -241,6 +243,10 @@ public class EcrireContratAchat extends JFrame {
 		description.setBackground(SystemColor.inactiveCaptionBorder);
 		
 		JButton imprimer = new JButton("Imprimer");
+		imprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		imprimer.setIcon(new ImageIcon(EcrireContratAchat.class.getResource("/Images/logo-imprimante.jpg")));
 		imprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

@@ -13,13 +13,12 @@ public class Client {
 	@Id
 	int id;
     String typeClient;
-    String typeBien;
 	String nom;
 	String prenom;
 	String cin;
 	String mail;
 	String tel;
-	
+	String Description;
 	
 
 	
@@ -33,15 +32,15 @@ public class Client {
 
 
 
-	public Client(String typeClient, String typebien, String nom,String prenom,String cin, String mail, String tel) {
+	public Client(String typeClient,  String nom,String prenom,String cin, String mail, String tel,String Description) {
 		super();
 		this.typeClient = typeClient;
-		this.typeBien = typebien;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
 		this.cin = cin;
+		this.Description=Description;
 	}
 
 
@@ -73,18 +72,6 @@ public class Client {
 	}
 
 
-
-
-	public String getTypebien() {
-		return typeBien;
-	}
-
-
-
-
-	public void setTypebien(String typebien) {
-		this.typeBien = typebien;
-	}
 
 
 
@@ -147,11 +134,20 @@ public class Client {
 	}
 
 
-
-
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+
+
+	public void setDescription(String Description) {
+		this.Description = Description;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+
 
 
 

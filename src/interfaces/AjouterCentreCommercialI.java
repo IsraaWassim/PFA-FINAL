@@ -402,32 +402,31 @@ public class AjouterCentreCommercialI extends JFrame {
 					JOptionPane.showMessageDialog(null, "verifiez les champs s'il vous plait !!");
 				}
 				else{
-				
-					 
+					
 					 String y=villebox.getSelectedItem().toString();
 					 String z=StatutBox.getSelectedItem().toString();
 					 
-			     
-				    
 			      CentreCommercialDAO adao=new CentreCommercialDAO();
 			      ProprietaireDAO pdao=new ProprietaireDAO();
 			      CentreCommercial ap=new CentreCommercial( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
 Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
 ap.setProprietaire(pr);
 adao.save(ap);
-//Pour vider les champs
-codepostal.setText(null);
-surface.setText(null);
-prix.setText(null);
-description.setText(null);
-rue.setText(null);
-tel.setText(null);
-mail.setText(null);
-cin.setText(null);
-prenom.setText(null);
-nom.setText(null);
+	
+
 
 				JOptionPane.showMessageDialog(null, "Centre Commercial & Proprietaire  ajoutés avec succés !");
+				//Pour vider les champs
+				codepostal.setText(null);
+				surface.setText(null);
+				prix.setText(null);
+				description.setText(null);
+				rue.setText(null);
+				tel.setText(null);
+				mail.setText(null);
+				cin.setText(null);
+				prenom.setText(null);
+				nom.setText(null);
 				    }
 			}
 		});
