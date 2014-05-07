@@ -10,10 +10,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="centreCommercial")
+@Table(name="centrecommercial")
 public class CentreCommercial {
-	@GeneratedValue
+	
 	@Id	
+	@GeneratedValue
 	int id;
 	String description;
 	String prix;
@@ -23,18 +24,19 @@ public class CentreCommercial {
 	String surface;
 	String statut;
 	
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="idProprietaire")
 	Proprietaire proprietaire;
     
-	public String getProprietaire() {
-		return proprietaire.getNom()+" "+proprietaire.getPrenom();
+	public int getIdProprietaire() {
+		return proprietaire.getIdProprietaire();
 	}
+	
 
-
-
-
-
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}

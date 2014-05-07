@@ -23,6 +23,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.DefaultComboBoxModel;
@@ -30,6 +31,14 @@ import javax.swing.UIManager;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+
+import objet.Proprietaire;
+import objet.Terrain;
+import dao.ProprietaireDAO;
+import dao.TerrainDAO;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AjouterTerrainI extends JFrame {
 
@@ -43,6 +52,9 @@ public class AjouterTerrainI extends JFrame {
 	private JTextField codepostal;
 	private JTextField prix;
 	private JTextField rue;
+	JTextArea description;
+	JComboBox villebox;
+	JComboBox statutbox;
 
 	/**
 	 * Launch the application.
@@ -75,7 +87,7 @@ public class AjouterTerrainI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Les coordonn\u00E9es de client :", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Les coordonn\u00E9es de propri\u00E9taire :", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Nom:");
@@ -84,17 +96,18 @@ public class AjouterTerrainI extends JFrame {
 		cin = new JTextField();
 		cin.setColumns(10);
 		cin.setBackground(SystemColor.inactiveCaptionBorder);
-		
-		
 		cin.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9))
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_1 = new JLabel("E-Mail :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -124,13 +137,6 @@ public class AjouterTerrainI extends JFrame {
 		JLabel label_3 = new JLabel("CIN :");
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JLabel label_4 = new JLabel("Type de client :");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Locataire", "Propri\u00E9taire", "Acheteur"}));
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
 		JLabel label_5 = new JLabel("T\u00E9l\u00E8phone :");
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -139,13 +145,16 @@ public class AjouterTerrainI extends JFrame {
 		tel.setBackground(SystemColor.inactiveCaptionBorder);
 		tel.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9))
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		
 		prenom = new JTextField();
 		prenom.setColumns(10);
@@ -162,36 +171,28 @@ public class AjouterTerrainI extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 1045, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(25)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(25)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGap(81)
+							.addComponent(label)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(81)
-									.addComponent(label)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-										.addGroup(gl_panel.createSequentialGroup()
-											.addComponent(cin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-											.addGap(45)
-											.addComponent(label_1)
-											.addGap(29)
-											.addComponent(mail, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED))
-										.addGroup(gl_panel.createSequentialGroup()
-											.addGap(65)
-											.addComponent(nom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-											.addComponent(label_2)
-											.addGap(27))))
-								.addComponent(label_3)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(375)
-							.addComponent(label_4)
-							.addGap(47)
-							.addComponent(comboBox, 0, 134, Short.MAX_VALUE)))
+									.addComponent(cin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+									.addGap(45)
+									.addComponent(label_1)
+									.addGap(29)
+									.addComponent(mail, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(65)
+									.addComponent(nom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(label_2)
+									.addGap(27))))
+						.addComponent(label_3))
 					.addGap(35)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
@@ -203,13 +204,8 @@ public class AjouterTerrainI extends JFrame {
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 224, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_4)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+					.addGap(54)
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addComponent(prenom, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -240,7 +236,7 @@ public class AjouterTerrainI extends JFrame {
 		JLabel label_6 = new JLabel("Description :");
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JTextArea description = new JTextArea();
+		 description = new JTextArea();
 		description.setBackground(SystemColor.inactiveCaptionBorder);
 		
 		JLabel label_7 = new JLabel("Ville :");
@@ -249,8 +245,9 @@ public class AjouterTerrainI extends JFrame {
 		JLabel label_8 = new JLabel("Surface :");
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JComboBox villebox = new JComboBox(new Object[]{});
-		
+		 villebox = new JComboBox(new Object[]{});
+			villebox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+
 		JLabel label_9 = new JLabel("Code Postal :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -259,13 +256,16 @@ public class AjouterTerrainI extends JFrame {
 		surface.setBackground(SystemColor.inactiveCaptionBorder);
 		surface.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_11 = new JLabel("Prix :");
 		label_11.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -274,28 +274,32 @@ public class AjouterTerrainI extends JFrame {
 		codepostal.setBackground(SystemColor.inactiveCaptionBorder);
 		codepostal.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
-	
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		
 		prix = new JTextField();
 		prix.setColumns(10);
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
-		
 		prix.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<1 || car>9)) 
-	              evt.consume(); 
-			}
-		});
+		public void keyTyped(KeyEvent evt) {
+
+            char car = evt.getKeyChar(); 
+            
+            if((car<'0' || car>'9')) 
+             evt.consume(); 
+           
+  }
+   
+ });
 		JLabel label_12 = new JLabel("Rue :");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -312,6 +316,13 @@ public class AjouterTerrainI extends JFrame {
 		rue.setColumns(10);
 		
 		rue.setBackground(SystemColor.inactiveCaptionBorder);
+		
+		JLabel lblStatut = new JLabel("Statut :");
+		lblStatut.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		 statutbox = new JComboBox();
+		statutbox.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		statutbox.setModel(new DefaultComboBoxModel(new String[] {"Location", "Achat"}));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -329,28 +340,26 @@ public class AjouterTerrainI extends JFrame {
 								.addComponent(label_8))
 							.addGap(65)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(villebox, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-									.addGap(54)
-									.addComponent(label_9))
+								.addComponent(villebox, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 								.addComponent(surface, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
-							.addGap(31)
+							.addGap(45)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblStatut)
+								.addComponent(label_9))
+							.addGap(49)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(217)
-									.addComponent(label_11))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(18)
 									.addComponent(codepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
 									.addGap(41)
-									.addComponent(label_12)))
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+									.addComponent(label_12))
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(15)
-									.addComponent(prix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addGap(26)
-									.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)))))
+									.addComponent(statutbox, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(label_11)))
+							.addGap(26)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+								.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addComponent(prix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
 		gl_panel_1.setVerticalGroup(
@@ -368,26 +377,77 @@ public class AjouterTerrainI extends JFrame {
 					.addGap(40)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_8)
-						.addComponent(label_11)
+						.addComponent(surface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblStatut)
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(surface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(label_11)
+						.addComponent(statutbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(23)
 							.addComponent(description, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_panel_1.createSequentialGroup()
 							.addComponent(label_6)
 							.addGap(65))))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
 		JButton ajouter = new JButton("Ajouter ");
+		ajouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(rue.getText().equals("") || codepostal.getText().equals("") || surface.getText().equals("") || prix.getText().equals("") || description.getText().equals(""))
+				{  
+					JOptionPane.showMessageDialog(null, "verifiez les champs s'il vous plait !!");
+				}
+				else{
+				
+					
+					 String y=villebox.getSelectedItem().toString();
+					 String z=statutbox.getSelectedItem().toString();
+				    
+			      TerrainDAO adao=new TerrainDAO();
+			      ProprietaireDAO pdao=new ProprietaireDAO();
+Terrain ap=new Terrain( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
+Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
+ap.setProprietaire(pr);
+adao.save(ap);
+
+//Pour vider les champs
+codepostal.setText(null);
+surface.setText(null);
+prix.setText(null);
+description.setText(null);
+rue.setText(null);
+tel.setText(null);
+mail.setText(null);
+cin.setText(null);
+prenom.setText(null);
+nom.setText(null);
+				JOptionPane.showMessageDialog(null, "Terrain & Proprietaire  ajoutés avec succés !");
+				    }
+			}
+	
+		});
 		ajouter.setIcon(new ImageIcon(AjouterTerrainI.class.getResource("/Images/edit_add.png")));
 		ajouter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prenom.setText("");
+				nom.setText("");
+				cin.setText("");
+				codepostal.setText("");
+				rue.setText("");
+				mail.setText("");
+				tel.setText("");
+				prix.setText("");
+				surface.setText("");
+				description.setText("");
+			}
+		});
 		btnAnnuler.setIcon(new ImageIcon(AjouterTerrainI.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		btnAnnuler.setActionCommand("Annuler");
 		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -430,5 +490,4 @@ public class AjouterTerrainI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
-
 }

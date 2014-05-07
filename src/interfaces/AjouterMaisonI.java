@@ -54,7 +54,6 @@ public class AjouterMaisonI extends JFrame {
 	private JTextField surface;
 	private JTextField codepostal;
 	private JTextField prix;
-	private JTextField etage;
 	private JTextField rue;
 	private JTextField chambre;
 private JTextArea description;
@@ -309,25 +308,6 @@ JComboBox statut;
  });
 		JLabel label_12 = new JLabel("Rue :");
 		label_12.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		JLabel label_13 = new JLabel("Etages :");
-		label_13.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		etage = new JTextField();
-		etage.setColumns(10);
-		etage.setBackground(SystemColor.inactiveCaptionBorder);
-		etage.addKeyListener(new KeyAdapter() {
-			@Override
-		public void keyTyped(KeyEvent evt) {
-
-            char car = evt.getKeyChar(); 
-            
-            if((car<'0' || car>'9')) 
-             evt.consume(); 
-           
-  }
-   
- });
 		rue = new JTextField();
 		rue.setColumns(10);
 		rue.setBackground(SystemColor.inactiveCaptionBorder);
@@ -409,7 +389,6 @@ JComboBox statut;
 							.addGap(56)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addComponent(label_12)
-								.addComponent(label_13)
 								.addComponent(lblChambre_1)))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -422,9 +401,7 @@ JComboBox statut;
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addComponent(statut, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-								.addComponent(etage, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+							.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
 							.addComponent(chambre, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
@@ -442,8 +419,6 @@ JComboBox statut;
 							.addComponent(rue, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)))
 					.addGap(28)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_13)
-						.addComponent(etage, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(surface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_8)
@@ -467,7 +442,7 @@ JComboBox statut;
 							.addComponent(label_6))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(description, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+							.addComponent(description, GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
 						.addGroup(gl_panel_1.createSequentialGroup()
 							.addGap(50)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
@@ -521,6 +496,20 @@ JComboBox statut;
 		btnajouter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prenom.setText("");
+				nom.setText("");
+				cin.setText("");
+				codepostal.setText("");
+				rue.setText("");
+				mail.setText("");
+				tel.setText("");
+				prix.setText("");
+				surface.setText("");
+				description.setText("");
+			}
+		});
 		btnAnnuler.setIcon(new ImageIcon(AjouterMaisonI.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

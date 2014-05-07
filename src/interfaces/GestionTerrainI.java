@@ -6,15 +6,23 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+
 import java.awt.SystemColor;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -22,14 +30,23 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+
+import objet.TableModelTerrain;
+import objet.Terrain;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JScrollPane;
+
+import dao.TerrainDAO;
 
 public class GestionTerrainI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField prix;
 	private JTable table;
+	TableModelTerrain model;
 
 	/**
 	 * Launch the application.
@@ -70,17 +87,19 @@ public class GestionTerrainI extends JFrame {
 		panel.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Prix :");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		prix = new JTextField();
 		prix.setColumns(10);
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
 		
 		JLabel label_1 = new JLabel("Ville :");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JComboBox boxville = new JComboBox();
-		
+		boxville.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+
 		JLabel label_2 = new JLabel("Filtrer");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
@@ -90,17 +109,16 @@ public class GestionTerrainI extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 760, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(59)
 					.addComponent(label)
 					.addGap(53)
 					.addComponent(prix, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
-					.addGap(28)
+					.addGap(61)
 					.addComponent(label_1)
-					.addGap(30)
-					.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-					.addGap(67)
+					.addGap(43)
+					.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+					.addGap(76)
 					.addComponent(label_2)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
@@ -108,16 +126,15 @@ public class GestionTerrainI extends JFrame {
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 127, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(42)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-						.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
 						.addComponent(label)
-						.addComponent(label_2))
+						.addComponent(label_2)
+						.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -143,35 +160,24 @@ public class GestionTerrainI extends JFrame {
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Terrain c = new Terrain();
+				 
+				c.setId(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
+			
+				new TerrainDAO().delete(c);
+				
+				JOptionPane.showMessageDialog(null, "Terrain Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
+				
+			}
+		});
 		btnSupprimer.setIcon(new ImageIcon(GestionTerrainI.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		model = new TableModelTerrain();
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
-			}
-		));
-		table.setSurrendersFocusOnKeystroke(true);
-		table.setCellSelectionEnabled(true);
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBackground(SystemColor.menu);
+		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -184,14 +190,16 @@ public class GestionTerrainI extends JFrame {
 							.addGap(115)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(19)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
-							.addGap(58)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 793, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(108, Short.MAX_VALUE))
+							.addGap(263)
+							.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addGap(112)
+							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addGap(120)
+							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1045, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(65, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -200,17 +208,22 @@ public class GestionTerrainI extends JFrame {
 					.addComponent(lblGestionDesTerrains, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(51)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addGap(79)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addGap(40)
-							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addGap(40)
-							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-						.addComponent(table, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(159, Short.MAX_VALUE))
+					.addGap(31)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+					.addGap(83)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(192, Short.MAX_VALUE))
 		);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setBackground(SystemColor.inactiveCaptionBorder);
+		table.setModel(model);
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBackground(SystemColor.menu);
 		contentPane.setLayout(gl_contentPane);
 	}
 

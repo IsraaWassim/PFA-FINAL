@@ -1,8 +1,4 @@
 package objet;
-
-
-
-
 import java.util.*;
 
 import javax.swing.JOptionPane;
@@ -20,16 +16,6 @@ public class TableModelAppartement extends AbstractTableModel
         super();
         AppartemmentDAO appartemmentDAO = new AppartemmentDAO();
         appartemmentList = appartemmentDAO.getAllAppartement();
-       
-//        SessionFactory sf=new Configuration().configure().buildSessionFactory();
-//        Session session=sf.openSession();
-//
-//        Query q=session.createQuery("from objet.Proprietaire");
-//        ProprietaireList=new ArrayList<Proprietaire>(q.list());
-        //System.out.println("cccccccccccccccccccccccc" + ProprietaireList.size());
-//        session.close();
-//        sf.close();
-       // ProprietaireList=(ArrayList<Proprietaire>) new ProprietaireDAO().getClient();
     }
 
     public int getRowCount()

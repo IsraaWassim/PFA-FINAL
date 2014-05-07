@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -63,26 +64,35 @@ public class GestionApparI extends JFrame {
 	 * Create the frame.
 	 */
 	public GestionApparI() {
-		setResizable(false);
+		
 		setTitle("Gestion des Appartements");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
 		setBounds(100, 100, 1136, 724);
-	
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		 this.setLocationRelativeTo(null);
+
 		JLabel lblGestionDesAppartements = new JLabel("Gestion des appartements");
 		lblGestionDesAppartements.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/logo_appartement_immobilier_lardreau.jpg")));
 		lblGestionDesAppartements.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AjouterAppartementI a = new AjouterAppartementI();
+				a.setVisible(true);
+			}
+		});
 		btnAjouter.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/edit_add.png")));
 		
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 			}
 		});
 		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
@@ -93,27 +103,7 @@ public class GestionApparI extends JFrame {
 				Appartemment c = new Appartemment();
 				 
 				c.setIdAppartement(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
-				//String description=(model.getValueAt(table.getSelectedRow(),1).toString());
-				/*String prix=(String)(model.getValueAt(table.getSelectedRow(),2));
-				String ville=(String)(model.getValueAt(table.getSelectedRow(),3));
-				String rue=(String)model.getValueAt(table.getSelectedRow(),4);
-				String code=(String)model.getValueAt(table.getSelectedRow(),5);
-				String ascenseur=(String)model.getValueAt(table.getSelectedRow(),6);
-				String surface=(String)model.getValueAt(table.getSelectedRow(),7);
-				String statut=(String)model.getValueAt(table.getSelectedRow(),8);
-				String etage=(String)model.getValueAt(table.getSelectedRow(),8);
-		*/
-			//c.setIdAppartement(Integer.parseInt(idAppartement));
-			/*	c.setDescription(description);
-				c.setPrix(prix);
-				c.setVille(ville);
-				c.setRue(rue);
-				c.setCode(code);
-				c.setAscenseur(ascenseur);
-				c.setSurface(surface);
-				c.setStatut(statut);
-				c.setEtage(etage);
-				 */
+			
 				new AppartemmentDAO().delete(c);
 				
 				JOptionPane.showMessageDialog(null, "Appartement Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
@@ -130,16 +120,19 @@ public class GestionApparI extends JFrame {
 		panel.setBackground(Color.WHITE);
 		
 		JLabel label = new JLabel("Prix :");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		prix = new JTextField();
 		prix.setColumns(10);
 		prix.setBackground(SystemColor.inactiveCaptionBorder);
 		
 		JLabel label_1 = new JLabel("Ville :");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+
 		
 		JLabel label_2 = new JLabel("Filtrer");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -150,17 +143,16 @@ public class GestionApparI extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 760, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(59)
 					.addComponent(label)
 					.addGap(53)
 					.addComponent(prix, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
-					.addGap(28)
+					.addGap(61)
 					.addComponent(label_1)
-					.addGap(30)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-					.addGap(67)
+					.addGap(39)
+					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(80)
 					.addComponent(label_2)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
@@ -168,16 +160,15 @@ public class GestionApparI extends JFrame {
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 127, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(42)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addComponent(button, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
 						.addComponent(label)
-						.addComponent(label_2))
+						.addComponent(label_2)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -185,7 +176,7 @@ public class GestionApparI extends JFrame {
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblGestionDesAppartements)
@@ -194,7 +185,7 @@ public class GestionApparI extends JFrame {
 					.addGap(110)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(250, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(167)
 					.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
 					.addGap(91)
@@ -202,7 +193,7 @@ public class GestionApparI extends JFrame {
 					.addGap(99)
 					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
 					.addGap(331))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
 					.addContainerGap())
@@ -215,8 +206,8 @@ public class GestionApparI extends JFrame {
 					.addGap(28)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
 					.addGap(138)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-					.addGap(105)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(93)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAjouter)
 						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)

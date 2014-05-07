@@ -66,7 +66,6 @@ public class AjouterClient extends JFrame {
 	 * Create the frame.
 	 */
 	public AjouterClient() {
-		setResizable(false);
 		setTitle("Ajouter Client");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 651, 673);
@@ -209,6 +208,16 @@ public class AjouterClient extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 		
 		JButton Annuler = new JButton("Annuler");
+		Annuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prenom.setText("");
+				nom.setText("");
+				cin.setText("");
+				mail.setText("");
+				tel.setText("");
+				textArea.setText("");
+			}
+		});
 		Annuler.setIcon(new ImageIcon(AjouterClient.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		Annuler.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

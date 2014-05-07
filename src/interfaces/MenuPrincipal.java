@@ -114,8 +114,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 		{
 			public void actionPerformed(java.awt.event.ActionEvent e )
 			{
-				//GestionAppartementI a = new GestionAppartementI();
-	        	//a.setVisible(true);
+				GestionApparI a = new GestionApparI();
+	        	a.setVisible(true);
 			}
 			 
 		});
