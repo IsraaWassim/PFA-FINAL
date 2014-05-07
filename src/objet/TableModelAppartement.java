@@ -10,12 +10,12 @@ import javax.swing.table.AbstractTableModel;
 
 import dao.AppartemmentDAO;
 
-public class TableModel extends AbstractTableModel
+public class TableModelAppartement extends AbstractTableModel
 {
     private static final long serialVersionUID = 6105842825518764825L;
     private List<Appartemment> appartemmentList;
 
-    public TableModel()
+    public TableModelAppartement()
     {
         super();
         AppartemmentDAO appartemmentDAO = new AppartemmentDAO();
@@ -45,7 +45,7 @@ public class TableModel extends AbstractTableModel
     public Object getValueAt(int rowIndex, int columnIndex)
     {
     	Appartemment p=appartemmentList.get(rowIndex);
-    	Object[] values=new Object[]{p.getIdProprietaire(),p.getIdAppartement(),p.getProprietaire().getNom()+" "+ p.getProprietaire().getPrenom(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getAscenseur(),p.getSurface(),p.getStatut(),p.getEtage(),p.getIdAppartement()};
+    	Object[] values=new Object[]{p.getIdProprietaire(),p.getIdAppartement(),p.getProprietaire().getNom()+" "+ p.getProprietaire().getPrenom(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getAscenseur(),p.getSurface(),p.getStatut(),p.getEtage()};
         System.out.println(values.length);
         return values[columnIndex];
         
@@ -54,7 +54,7 @@ public class TableModel extends AbstractTableModel
     @Override
     public String getColumnName(int column)
     {
-        String[] columnNames=new String[]{"Id Proprietaire","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Ascenseur","Surface","Statut","Etage","Id Apparetemment"};
+        String[] columnNames=new String[]{"Id Proprietaire","Id Apparetemment","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Ascenseur","Surface","Statut","Etage"};
         return columnNames[column];
     }
 }

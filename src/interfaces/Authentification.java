@@ -79,7 +79,8 @@ public class Authentification extends JFrame {
 				boolean b=false;
 
 				if (l.equals("admin")== false){
-				JOptionPane.showMessageDialog(null," Login incorrect Essayer de nouveau","Error Message",JOptionPane.ERROR_MESSAGE);}
+				JOptionPane.showMessageDialog(null," Login ou Mot de passe incorrect E"
+						+ "ssayer de nouveau","Error Message",JOptionPane.ERROR_MESSAGE);}
 				if (m.equals("1234")== false){JOptionPane.showMessageDialog(null," Mot de passe incoorrect Essayer de nouveau\n","Error Message",JOptionPane.ERROR_MESSAGE);
 				}
 				  
@@ -92,7 +93,8 @@ public class Authentification extends JFrame {
 				            }
 				            else
 				            {
-				                JOptionPane.showMessageDialog(null,"Login ou Mot_passe est incorrecte ", "Erreur", JOptionPane.ERROR_MESSAGE,null);
+				                JOptionPane.showMessageDialog(null," Login ou Mot de passe incorrect"
+				                		+ "Essayer de nouveau ", "Erreur", JOptionPane.ERROR_MESSAGE,null);
 				            } this.setVisible(false);
 
 				

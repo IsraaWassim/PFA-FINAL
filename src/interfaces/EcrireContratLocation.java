@@ -23,15 +23,21 @@ import javax.swing.JTextField;
 import java.awt.SystemColor;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.UIManager;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import com.toedter.calendar.JDateChooser;
+
 import javax.swing.SwingConstants;
+
+import java.awt.event.ActionListener;
 
 public class EcrireContratLocation extends JFrame {
 
@@ -160,13 +166,30 @@ public class EcrireContratLocation extends JFrame {
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBackground(SystemColor.inactiveCaptionBorder);
-		
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		JLabel label_6 = new JLabel("E-Mail :");
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBackground(SystemColor.inactiveCaptionBorder);
+		textField_1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		
 		JLabel label_8 = new JLabel("CIN :");
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -177,6 +200,15 @@ public class EcrireContratLocation extends JFrame {
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBackground(SystemColor.inactiveCaptionBorder);
+		textField_3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
 		
 		JLabel label = new JLabel("Nom et Pr\u00E9nom:");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -254,6 +286,15 @@ public class EcrireContratLocation extends JFrame {
 	    dateChooser.setBounds(20, 20, 100, 20);
 	    this.getContentPane().add(dateChooser);
 		JButton btnImprimer = new JButton("Imprimer");
+		btnImprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+if( textField.getText().equals(""))
+				{  
+					JOptionPane.showMessageDialog(null, "verifiez les champs s'il vous plait !!");
+				}
+				else{}
+			}
+		});
 		btnImprimer.setIcon(new ImageIcon(EcrireContratLocation.class.getResource("/Images/logo-imprimante.jpg")));
 		btnImprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 	

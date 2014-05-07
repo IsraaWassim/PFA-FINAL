@@ -1,16 +1,20 @@
 package objet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="maison")
 public class Maison {
-	@GeneratedValue
+	
 	@Id	
+	@GeneratedValue
 	int id;
 	String description;
 	String surface;
@@ -23,11 +27,28 @@ public class Maison {
 	String jardin;
 	String statut;
 	
-	public Maison() 
-	{
-		super();
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="idProprietaire")
+	Proprietaire proprietaire;
+	public int getIdProprietaire() {
+		return proprietaire.getIdProprietaire();
 	}
+	
+
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+
+
+
+
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -132,4 +153,9 @@ public class Maison {
 	}
 
 
+	public Maison() 
+	{
+		super();
+
+	}
 }

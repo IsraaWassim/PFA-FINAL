@@ -27,6 +27,8 @@ public class Proprietaire {
 	@OneToMany(mappedBy = "proprietaire")
 	private List<CentreCommercial> centre;
 	
+	@OneToMany(mappedBy = "proprietaire")
+	private List<Maison> maison;
 	public int getIdProprietaire() {
 		return idProprietaire;
 	}
@@ -101,7 +103,7 @@ public class Proprietaire {
 	public void setAppartements(List<Appartemment> appartements) {
 		this.appartements = appartements;
 	}
-	/*
+	
 	public List<CentreCommercial> getCentre() {
 		return centre;
 	}
@@ -111,7 +113,15 @@ public class Proprietaire {
 	}
 	
 	
-	*/
+	
+	public List<Maison> getMaiosn() {
+		return maison;
+	}
+
+	public void setMaison(List<Maison> maison) {
+		this.maison = maison;
+	}	
+
 	
 	
 	

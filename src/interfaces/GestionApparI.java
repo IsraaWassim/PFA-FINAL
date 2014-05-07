@@ -41,7 +41,7 @@ public class GestionApparI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	TableModel model ;
+	TableModelAppartement model ;
 	private JTextField prix;
 	/**
 	 * Launch the application.
@@ -74,12 +74,17 @@ public class GestionApparI extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblGestionDesAppartements = new JLabel("Gestion des appartements");
+		lblGestionDesAppartements.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/logo_appartement_immobilier_lardreau.jpg")));
 		lblGestionDesAppartements.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/edit_add.png")));
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
@@ -87,7 +92,7 @@ public class GestionApparI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Appartemment c = new Appartemment();
 				 
-				c.setIdAppartement(Integer.parseInt(model.getValueAt(table.getSelectedRow(),12).toString()));
+				c.setIdAppartement(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
 				//String description=(model.getValueAt(table.getSelectedRow(),1).toString());
 				/*String prix=(String)(model.getValueAt(table.getSelectedRow(),2));
 				String ville=(String)(model.getValueAt(table.getSelectedRow(),3));
@@ -111,7 +116,7 @@ public class GestionApparI extends JFrame {
 				 */
 				new AppartemmentDAO().delete(c);
 				
-				JOptionPane.showMessageDialog(null, "Client Supprimer ", "OK", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Appartement Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		
@@ -140,6 +145,7 @@ public class GestionApparI extends JFrame {
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton button = new JButton("");
+		button.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/rechercher.gif")));
 		button.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -181,57 +187,57 @@ public class GestionApparI extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(500)
+					.addContainerGap()
 					.addComponent(lblGestionDesAppartements)
-					.addContainerGap())
+					.addGap(406))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnModifier, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 877, GroupLayout.PREFERRED_SIZE)
-					.addGap(100))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(163)
+					.addGap(110)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(197, Short.MAX_VALUE))
+					.addContainerGap(250, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(167)
+					.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+					.addGap(91)
+					.addComponent(btnModifier, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+					.addGap(99)
+					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+					.addGap(331))
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnAjouter, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-					.addGap(985))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-					.addGap(995))
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(26)
-							.addComponent(lblGestionDesAppartements))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(86)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
-					.addComponent(btnAjouter)
-					.addGap(30)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-							.addGap(39)
-							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-							.addGap(18))
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(236, Short.MAX_VALUE))
+					.addGap(27)
+					.addComponent(lblGestionDesAppartements)
+					.addGap(28)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addGap(138)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+					.addGap(105)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAjouter)
+						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+					.addGap(111))
 		);
 		table = new JTable();
-		model = new TableModel();
-		table.setBackground(SystemColor.control);
+		model = new TableModelAppartement();
+		table.setBackground(SystemColor.inactiveCaptionBorder);
 		scrollPane.setViewportView(table);
 		table.setModel(model);
 		table.getColumnModel().getColumn(0).setPreferredWidth(83);
 		table.getColumnModel().getColumn(10).setPreferredWidth(104);
+		contentPane.setLayout(gl_contentPane);
+		table.getColumnModel().getColumn(0).setPreferredWidth(79);
+		table.getColumnModel().getColumn(1).setPreferredWidth(111);
+		table.getColumnModel().getColumn(2).setPreferredWidth(98);
+		table.getColumnModel().getColumn(3).setPreferredWidth(120);
+		table.getColumnModel().getColumn(10).setPreferredWidth(104);
+		table.getColumnModel().getColumn(11).setPreferredWidth(103);
+	
 		contentPane.setLayout(gl_contentPane);
 	}
 }

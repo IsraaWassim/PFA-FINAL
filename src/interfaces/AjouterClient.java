@@ -250,17 +250,17 @@ textArea.setText(null);
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(262)
 					.addComponent(lblAjouterClient)
-					.addContainerGap(262, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(163, Short.MAX_VALUE)
+					.addContainerGap(165, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addContainerGap(158, Short.MAX_VALUE)
 					.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
-					.addGap(52)
+					.addGap(79)
 					.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
-					.addGap(271))
+					.addGap(153))
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(21)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 605, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(106, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -269,9 +269,9 @@ textArea.setText(null);
 					.addGap(25)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 479, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);

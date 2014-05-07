@@ -196,10 +196,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
   			 
   		});
         
-        mnAide = new JMenu("Aide");
+        mnAide = new JMenu("Statistique");
         mnAide.setFont(new Font("Dialog", Font.PLAIN, 16));
         mnAide.setBackground(Color.BLACK);
         jMenuBar1.add(mnAide);        
+        
+        mnStatiqtique = new JMenu("Aide");
+        mnStatiqtique.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        jMenuBar1.add(mnStatiqtique);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -231,4 +235,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private JMenuItem mntmContratDeLocation;
     private JMenuItem mntmConratDachat;
     private JTable table;
+    private JMenu mnStatiqtique;
 }
