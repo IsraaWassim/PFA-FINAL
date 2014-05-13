@@ -26,9 +26,9 @@ public class ContratLocation {
 
 	String description;
 	Date dateSignature;
-	Float prix;
+	String prix;
 	Date dateDeb;
-	public ContratLocation(String description, Date dateSignature, Float prix,
+	public ContratLocation(String description, Date dateSignature, String prix,
 			Date dateDeb, Date dateFin) {
 		super();
 		this.description = description;
@@ -54,11 +54,11 @@ public class ContratLocation {
 		this.dateSignature = dateSignature;
 	}
 
-	public Float getPrix() {
+	public String getPrix() {
 		return prix;
 	}
 
-	public void setPrix(Float prix) {
+	public void setPrix(String prix) {
 		this.prix = prix;
 	}
 

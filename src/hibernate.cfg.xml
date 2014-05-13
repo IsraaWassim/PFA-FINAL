@@ -16,7 +16,7 @@
 <mapping class="objet.Appartemment"/>
 <mapping class="objet.Proprietaire"/>
   <mapping class="objet.Maison"/>
-  <mapping class="objet.CentreCommercial"/>
+  <mapping class="objet.Centre"/>
   <mapping class="objet.Terrain"/>
  </session-factory>
 </hibernate-configuration>

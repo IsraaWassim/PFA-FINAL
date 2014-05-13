@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 
 import java.awt.SystemColor;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -35,12 +37,21 @@ import java.awt.event.KeyEvent;
 
 import com.toedter.calendar.JDateChooser;
 
+import dao.ClientDAO;
+
 import javax.swing.SwingConstants;
 
+import objet.Client;
+import objet.Maison;
+import objet.Proprietaire;
+
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class EcrireContratLocation extends JFrame {
 
+	private static final int List = 0;
+	private static final int Proprietaire = 0;
 	private JPanel contentPane;
 	private JTextField cin;
 	private JTextField mail;
@@ -48,9 +59,12 @@ public class EcrireContratLocation extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_3;
+	private List<Proprietaire> prop;
+	JComboBox boxnomP;
+	   String tab[];
+	   ClientDAO clientDAO;
 
 
-	
 
 	/**
 	 * Launch the application.
@@ -113,8 +127,28 @@ public class EcrireContratLocation extends JFrame {
 		tel = new JTextField();
 		tel.setColumns(10);
 		tel.setBackground(SystemColor.inactiveCaptionBorder);
+
+     
+
+		 clientDAO = new ClientDAO();
+		clientDAO.remplirComboBox();
 		
-		JComboBox boxnomP = new JComboBox();
+		boxnomP = new JComboBox();
+		boxnomP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			//JOptionPane.showMessageDialog(null,boxnomP.getSelectedItem().toString());
+				
+			Client client=clientDAO.getprop(boxnomP.getSelectedItem().toString());
+			cin.setText(client.getCin());
+			mail.setText(client.getMail());
+			tel.setText(client.getTel());
+			
+			
+			}
+		});
+		boxnomP.setModel(clientDAO.getaModel());
+		
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -373,4 +407,5 @@ if( textField.getText().equals(""))
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
+
 }

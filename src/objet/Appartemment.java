@@ -12,9 +12,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="appartemment")
 public class Appartemment {
-	
-	@Id	
 	@GeneratedValue
+	@Id	
 	int idAppartement;
 
 	String description;

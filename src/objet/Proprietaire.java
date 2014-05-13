@@ -25,7 +25,7 @@ public class Proprietaire {
 	private List<Appartemment> appartements;
 	
 	@OneToMany(mappedBy = "proprietaire")
-	private List<CentreCommercial> centre;
+	private List<Centre> centre;
 	
 	@OneToMany(mappedBy = "proprietaire")
 	private List<Maison> maison;
@@ -104,11 +104,11 @@ public class Proprietaire {
 		this.appartements = appartements;
 	}
 	
-	public List<CentreCommercial> getCentre() {
+	public List<Centre> getCentre() {
 		return centre;
 	}
 
-	public void setCentre(List<CentreCommercial> centre) {
+	public void setCentre(List<Centre> centre) {
 		this.centre = centre;
 	}
 	

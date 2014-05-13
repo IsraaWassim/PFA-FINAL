@@ -44,6 +44,7 @@ public class GestionApparI extends JFrame {
 	private JTable table;
 	TableModelAppartement model ;
 	private JTextField prix;
+	JScrollPane scrollPane;
 	/**
 	 * Launch the application.
 	 */
@@ -79,6 +80,8 @@ public class GestionApparI extends JFrame {
 		JLabel lblGestionDesAppartements = new JLabel("Gestion des appartements");
 		lblGestionDesAppartements.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/logo_appartement_immobilier_lardreau.jpg")));
 		lblGestionDesAppartements.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		model = new TableModelAppartement();
+
 		
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
@@ -92,7 +95,32 @@ public class GestionApparI extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				
+				String idAppartement=(model.getValueAt(table.getSelectedRow(),1).toString());		
+				String description=(String)(model.getValueAt(table.getSelectedRow(),3));
+				String prix=(String)(model.getValueAt(table.getSelectedRow(),4));
+				String ville=(String)model.getValueAt(table.getSelectedRow(),5);
+	
+				String rue=(String)model.getValueAt(table.getSelectedRow(),6);
+				String code=(String)model.getValueAt(table.getSelectedRow(),7);
+				String ascenseur=(String)model.getValueAt(table.getSelectedRow(),8);
+				String surface=(String)model.getValueAt(table.getSelectedRow(),9);
+				String statut=(String)model.getValueAt(table.getSelectedRow(),10);
+				String etage=(String)model.getValueAt(table.getSelectedRow(),11);
+				//JOptionPane.showMessageDialog(null, idAppartement+" "+description+" "+prix+" "+ville+" "+rue+" "+code+" "+ascenseur+" "+surface+" "+statut+" "+etage);
+				//new ModifierAppartementI(idAppartement,description,prix,ville,rue,code,ascenseur,surface,statut,etage);
+				ModifierAppartementI modifierAppartementI = new ModifierAppartementI(idAppartement, description, prix, ville, rue, code, ascenseur, surface, statut, etage);
+				modifierAppartementI.setTxtcode(code);
+				modifierAppartementI.setTxtdescription(description);
+				modifierAppartementI.setTxtid(idAppartement);
+				modifierAppartementI.setTxtprix(prix);
+				modifierAppartementI.setTxtrue(rue);
+				modifierAppartementI.setTxtsurface(surface);
+				modifierAppartementI.setComboBoxStatut(statut);
+				modifierAppartementI.setVisible(true);
+				
+		
 			}
 		});
 		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
@@ -113,7 +141,7 @@ public class GestionApparI extends JFrame {
 		});
 		btnSupprimer.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/supprimer-icone-9337-48.png")));
 			
-		JScrollPane scrollPane = new JScrollPane();
+		 scrollPane = new JScrollPane();
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Recherche Rapide :", TitledBorder.LEADING, TitledBorder.TOP, null, SystemColor.desktop));
@@ -148,27 +176,28 @@ public class GestionApparI extends JFrame {
 					.addComponent(label)
 					.addGap(53)
 					.addComponent(prix, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
-					.addGap(61)
+					.addGap(94)
 					.addComponent(label_1)
-					.addGap(39)
+					.addGap(61)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(80)
+					.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
 					.addComponent(label_2)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(30)
 					.addComponent(button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(32, Short.MAX_VALUE))
+					.addGap(40))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(42)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(button, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label)
-						.addComponent(label_2)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1))
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label)
+							.addComponent(label_2)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_1)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -178,22 +207,22 @@ public class GestionApparI extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblGestionDesAppartements)
-					.addGap(406))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(110)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(250, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(167)
 					.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-					.addGap(91)
+					.addGap(197)
 					.addComponent(btnModifier, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-					.addGap(99)
+					.addGap(142)
 					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-					.addGap(331))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addGap(182))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(378)
+					.addComponent(lblGestionDesAppartements)
+					.addContainerGap(458, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(110)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 878, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(132, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
 					.addContainerGap())
@@ -201,27 +230,26 @@ public class GestionApparI extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(27)
+					.addContainerGap()
 					.addComponent(lblGestionDesAppartements)
-					.addGap(28)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addGap(138)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-					.addGap(93)
+					.addGap(44)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(80)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+					.addGap(123)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAjouter)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addGap(111))
+						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+					.addGap(103))
 		);
 		table = new JTable();
-		model = new TableModelAppartement();
-		table.setBackground(SystemColor.inactiveCaptionBorder);
+		table.setBackground(SystemColor.inactiveCaption);
 		scrollPane.setViewportView(table);
 		table.setModel(model);
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(83);
 		table.getColumnModel().getColumn(10).setPreferredWidth(104);
-		contentPane.setLayout(gl_contentPane);
 		table.getColumnModel().getColumn(0).setPreferredWidth(79);
 		table.getColumnModel().getColumn(1).setPreferredWidth(111);
 		table.getColumnModel().getColumn(2).setPreferredWidth(98);

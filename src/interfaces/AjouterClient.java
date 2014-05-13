@@ -66,6 +66,7 @@ public class AjouterClient extends JFrame {
 	 * Create the frame.
 	 */
 	public AjouterClient() {
+		setResizable(false);
 		setTitle("Ajouter Client");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 651, 673);

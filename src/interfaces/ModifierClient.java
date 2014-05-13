@@ -19,6 +19,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import java.awt.SystemColor;
@@ -33,7 +34,7 @@ import objet.Client;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ModifierClient extends JFrame {
+public class ModifierClient extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField txtnom;
@@ -43,6 +44,7 @@ public class ModifierClient extends JFrame {
 	private JTextField txttel;
 	JTextArea txtdescription;
 	JComboBox comboBoxClient;
+	private JTextField txtid;
 	/**
 	 * Launch the application.
 	 */
@@ -50,7 +52,7 @@ public class ModifierClient extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					int id = 0 ;
+					String id=null;
 				    String typeClient=null;
 					String nom=null;
 					String prenom=null;
@@ -72,9 +74,9 @@ public class ModifierClient extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModifierClient(int id,String typeClient,String nom,String prenom,String cin,String mail,String tel,String Description) {
+	public ModifierClient(String id,String typeClient,String nom,String prenom,String cin,String mail,String tel,String Description) {
 		setTitle("Modifier Client");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 651, 673);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -130,25 +132,43 @@ public class ModifierClient extends JFrame {
 		JLabel label_6 = new JLabel("Description :");
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		 txtdescription = new JTextArea();
+		txtdescription = new JTextArea();
 		txtdescription.setBackground(SystemColor.inactiveCaptionBorder);
+		
+		txtcin.setText(cin);
+		txtnom.setText(nom);
+		txtprenom.setText(prenom);
+		txttel.setText(tel);
+		txtdescription.setText(Description);
+		txtmail.setText(mail);
 		
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Client a=new Client();	
-				
+				ClientDAO cd = new ClientDAO();
+				Client a = cd.findClient(new Integer(Integer.parseInt(txtid.getText())));	
+				a.setTypeClient(comboBoxClient.getSelectedItem().toString());
 				a.setCin(txtcin.getText());
 				a.setNom(txtnom.getText());
 				a.setPrenom(txtprenom.getText());
 				a.setMail(txtmail.getText());
 				a.setTel(txttel.getText());
 				a.setDescription(txtdescription.getText());
-				
-				new ClientDAO().update(a);
+				cd.update(a);
 				
 				  JOptionPane.showMessageDialog(null, "Client Modifier ", "OK", JOptionPane.INFORMATION_MESSAGE);
 				
+			
+					// Pour vider les champs
+				  
+				    txtid.setText(null);
+					txtcin.setText(null);
+					txtnom.setText(null);
+					txtprenom.setText(null);
+					txtmail.setText(null);
+					txttel.setText(null);
+					txtdescription.setText(null);
+					 
 			}
 		});
 		btnModifier.setIcon(new ImageIcon(ModifierClient.class.getResource("/Images/modifier.png")));
@@ -157,53 +177,70 @@ public class ModifierClient extends JFrame {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAnnuler.setIcon(new ImageIcon(ModifierClient.class.getResource("/Images/supprimer-icone-9337-48.png")));
+		
+		JLabel lblIdClient = new JLabel("Id Client :");
+		lblIdClient.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		txtid = new JTextField();
+		txtid.setBackground(SystemColor.inactiveCaptionBorder);
+		txtid.setColumns(10);
+		txtid.setText(id);
+		txtid.setEditable(false);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(274, Short.MAX_VALUE)
+					.addComponent(lblModifierClient)
+					.addGap(165))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(244, Short.MAX_VALUE)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addGap(32)
+					.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addGap(155))
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(31)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblIdClient))
+					.addGap(55)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(237)
-							.addComponent(lblModifierClient))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(31)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(label, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
-							.addGap(52)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnModifier)
-									.addGap(57)
-									.addComponent(btnAnnuler))
-								.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtmail, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtcin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtprenom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtnom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txttel, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))))
+							.addComponent(btnModifier)
+							.addGap(57)
+							.addComponent(btnAnnuler))
+						.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 396, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtmail, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtcin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtprenom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txttel, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(txtid, Alignment.LEADING)
+							.addComponent(txtnom, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
 					.addContainerGap(63, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(32)
 					.addComponent(lblModifierClient)
-					.addGap(41)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtnom, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))))
+					.addGap(28)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblIdClient)
+						.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(31)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtnom, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(33)
@@ -237,5 +274,6 @@ public class ModifierClient extends JFrame {
 					.addGap(23))
 		);
 		contentPane.setLayout(gl_contentPane);
+		setVisible(true);
 	}
 }

@@ -35,9 +35,9 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.DefaultComboBoxModel;
 
-import objet.CentreCommercial;
+import objet.Centre;
 import objet.Proprietaire;
-import dao.CentreCommercialDAO;
+import dao.CentreDAO;
 import dao.ProprietaireDAO;
 
 public class AjouterCentreCommercialI extends JFrame {
@@ -406,9 +406,9 @@ public class AjouterCentreCommercialI extends JFrame {
 					 String y=villebox.getSelectedItem().toString();
 					 String z=StatutBox.getSelectedItem().toString();
 					 
-			      CentreCommercialDAO adao=new CentreCommercialDAO();
+			      CentreDAO adao=new CentreDAO();
 			      ProprietaireDAO pdao=new ProprietaireDAO();
-			      CentreCommercial ap=new CentreCommercial( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
+			      Centre ap=new Centre( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
 Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
 ap.setProprietaire(pr);
 adao.save(ap);

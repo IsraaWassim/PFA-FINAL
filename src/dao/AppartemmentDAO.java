@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import objet.Appartemment;
+import objet.Client;
 import objet.HibernateUtil;
 import objet.Proprietaire;
 
@@ -24,7 +25,10 @@ public class AppartemmentDAO {
 		sf=new AnnotationConfiguration().configure().buildSessionFactory();
 		session=sf.openSession();
 	}
-
+	public Appartemment findAppartemment(Integer idAppartement){
+		session.beginTransaction();
+		return (Appartemment) session.get(Appartemment.class, idAppartement);
+	}
 	public void save(Appartemment a) {
 		Transaction tr1 = session.beginTransaction();
 		session.save(a);

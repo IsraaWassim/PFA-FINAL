@@ -2,12 +2,15 @@ package dao;
 
 import java.util.List;
 
-import org.hibernate.Transaction;
+import javax.swing.DefaultComboBoxModel;
 
+import org.hibernate.Query;
+import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
 
+import objet.Client;
 import objet.Proprietaire;
 
 
@@ -15,8 +18,9 @@ public class ProprietaireDAO {
 	
 	Session session;
 	SessionFactory sf;
-
+	private DefaultComboBoxModel aModel;
 	public ProprietaireDAO()
+	
 	{
 		sf=new AnnotationConfiguration().configure().buildSessionFactory();
 		session=sf.openSession();
@@ -40,32 +44,35 @@ public class ProprietaireDAO {
 		tr3.commit();
 	}
 	
-	/*public List<Adresse> getClient()
-	{
-		List<Client> l=session.createQuery("from objet.Client").list();
-		System.out.println(l.get(1).getCin()+l.get(1).getNom());
-		return l;
-	}
-	
-	public List<Client> getClientById(int id)
-	{
-		List<Client> l=session.createQuery("from objet.Client where id="+id+" ").list();
-		
-		return l;
-		
-	}
-	
-	public void updateClient(int id,String nom)
-	 {
+	public List<Proprietaire> getAllProprietaire() {
 
-	Transaction tf=session.beginTransaction();
-	org.hibernate.Query q1=session.createQuery("update objet.Client set nom='"+nom+"'  where id='"+id+"'");
-	int rowCount = q1.executeUpdate();
-	System.out.println("Rows affected: " + rowCount);
-	tf.commit();
+	session.beginTransaction();
+		Query query = session.createQuery("from Proprietaire");
+		List<Proprietaire> list= query.list();
+		System.out.println(list.toString());
+		return list;
 
-	 }
-	*/
+	}
+	public void remplirComboBox()
+	{
+		aModel=new DefaultComboBoxModel();
+		List<Proprietaire> l=session.createQuery("from Proprietaire").list();
+		aModel.addElement("");
+		try {
+	     
+		      for(Object obj : l)
+		      {
+		    	  Proprietaire prop =(Proprietaire)obj ;
+		    	  aModel.addElement(prop.getNom());
+		    	 
+		      }
+		    } 
+		    finally 
+		    {
+		      session.close();
+		    }
+		   
+	}
 	
 	public void closeConnection()
 	{

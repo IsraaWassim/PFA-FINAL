@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="client")
 public class Client {
@@ -19,18 +18,11 @@ public class Client {
 	String mail;
 	String tel;
 	String Description;
-	
-
-	
-
 	public Client() 
 	{
 		super();
 
 	}
-
-
-
 
 	public Client(String typeClient,  String nom,String prenom,String cin, String mail, String tel,String Description) {
 		super();

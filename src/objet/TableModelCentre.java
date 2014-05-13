@@ -1,27 +1,22 @@
 package objet;
-
-
-
-
 import java.util.*;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
-import dao.AppartemmentDAO;
-import dao.CentreCommercialDAO;
+import dao.CentreDAO;
+
 
 public class TableModelCentre extends AbstractTableModel
 {
     private static final long serialVersionUID = 6105842825518764825L;
-    private List<CentreCommercial> centreList;
+    private List<Centre> centreList;
 
     public TableModelCentre()
     {
         super();
-        CentreCommercialDAO centreDAO = new CentreCommercialDAO();
-        centreList = centreDAO.getAllCentreCommercial();
-       
+        CentreDAO centreDAO = new CentreDAO();
+        centreList = centreDAO.getAllCentre();
     }
 
     public int getRowCount()
@@ -36,7 +31,7 @@ public class TableModelCentre extends AbstractTableModel
 
     public Object getValueAt(int rowIndex, int columnIndex)
     {
-    	CentreCommercial p=centreList.get(rowIndex);
+    	Centre p=centreList.get(rowIndex);
     	Object[] values=new Object[]{p.getIdProprietaire(),p.getId(),p.getProprietaire().getNom()+" "+ p.getProprietaire().getPrenom(),p.getDescription(),p.getPrix(),p.getVille(),p.getRue(),p.getCode(),p.getSurface(),p.getStatut()};
         System.out.println(values.length);
         return values[columnIndex];
@@ -46,7 +41,7 @@ public class TableModelCentre extends AbstractTableModel
     @Override
     public String getColumnName(int column)
     {
-        String[] columnNames=new String[]{"Id Proprietaire","Id Centre Commercial","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Surface","Statut"};
+        String[] columnNames=new String[]{"Id Proprietaire","Id Apparetemment","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Surface","Statut"};
         return columnNames[column];
     }
 }
