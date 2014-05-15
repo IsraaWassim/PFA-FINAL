@@ -117,7 +117,7 @@ public class GestionApparI extends JFrame {
 				modifierAppartementI.setTxtprix(prix);
 				modifierAppartementI.setTxtrue(rue);
 				modifierAppartementI.setTxtsurface(surface);
-				modifierAppartementI.setComboBoxStatut(statut);
+				
 				modifierAppartementI.setVisible(true);
 				
 		

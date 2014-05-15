@@ -160,11 +160,16 @@ public class GestionClient extends JFrame {
 				String mail=(String)model.getValueAt(table.getSelectedRow(),5);
 				String tel=(String)model.getValueAt(table.getSelectedRow(),6);
 				String Description=(String)model.getValueAt(table.getSelectedRow(),7);
-				
-				
-				
-				new ModifierClient(id,typeClient,nom,prenom,cin,mail,tel,Description);
-				
+			
+				ModifierClient modifierClient = new ModifierClient(id,typeClient,nom,prenom,cin,mail,tel,Description);
+				modifierClient.setTxtcin(nom);
+				modifierClient.setTxtdescription(Description);
+				modifierClient.setTxtprenom(prenom);
+				modifierClient.setTxtcin(cin);
+				modifierClient.setTxtmail(mail);
+				modifierClient.setTxttel(tel);
+				modifierClient.setComboBoxClient(typeClient);
+				modifierClient.setVisible(true);
 		
 			}
 		});
@@ -238,4 +243,6 @@ public class GestionClient extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 	}
+	
+	
 }

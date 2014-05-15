@@ -152,8 +152,30 @@ public class GestionTerrainI extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModifierTerrainI t = new ModifierTerrainI();
-				t.setVisible(true);
+				String id=(model.getValueAt(table.getSelectedRow(),1).toString());
+				String description=(String)(model.getValueAt(table.getSelectedRow(),3));
+				String surface=(String)(model.getValueAt(table.getSelectedRow(),4));
+				String prix=(String)model.getValueAt(table.getSelectedRow(),5);
+	
+				String ville=(String)model.getValueAt(table.getSelectedRow(),6);
+				String rue=(String)model.getValueAt(table.getSelectedRow(),7);
+				String code=(String)model.getValueAt(table.getSelectedRow(),8);
+				String statut=(String)model.getValueAt(table.getSelectedRow(),9);
+			
+				ModifierTerrainI modifierTerrainI = new ModifierTerrainI(id,description,surface, prix,ville, rue,code, statut);
+				
+				modifierTerrainI.setTxtdescription(description);
+				modifierTerrainI.setTxtcodepostal(code);
+				modifierTerrainI.setTxtprix(prix);
+				modifierTerrainI.setTxtrue(rue);
+				modifierTerrainI.setTxtsurface(surface);
+				modifierTerrainI.setBoxstatut(statut);
+				modifierTerrainI.setVillebox(ville);
+				modifierTerrainI.setVisible(true);
+				
+				
+				
+				
 			}
 		});
 		btnModifier.setIcon(new ImageIcon(GestionTerrainI.class.getResource("/Images/modifier.png")));

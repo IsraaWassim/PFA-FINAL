@@ -69,48 +69,7 @@ public class Authentification extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		JButton btnConnexion = new JButton("Connexion");
-		btnConnexion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				String l=login.getText();
-				String m =pwd.getText();
-
-
-				boolean b=false;
-
-				if (l.equals("admin")== false){
-				JOptionPane.showMessageDialog(null," Login ou Mot de passe incorrect E"
-						+ "ssayer de nouveau","Error Message",JOptionPane.ERROR_MESSAGE);}
-				if (m.equals("1234")== false){JOptionPane.showMessageDialog(null," Mot de passe incoorrect Essayer de nouveau\n","Error Message",JOptionPane.ERROR_MESSAGE);
-				}
-				  
-				 
-				if((l.equals("admin"))&&(m.equals("1234"))){
-				          
-				       
-				                new MenuPrincipal().setVisible(true);
-				               this.hide();
-				            }
-				            else
-				            {
-				                JOptionPane.showMessageDialog(null," Login ou Mot de passe incorrect"
-				                		+ "Essayer de nouveau ", "Erreur", JOptionPane.ERROR_MESSAGE,null);
-				            } this.setVisible(false);
-
-				
-			
-			}
-
-			private void hide() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			private void setVisible(boolean b) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+	
 		btnConnexion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConnexion.setIcon(new ImageIcon(Authentification.class.getResource("/Images/limportation-kgpg-icone-9298-48.png")));
 		

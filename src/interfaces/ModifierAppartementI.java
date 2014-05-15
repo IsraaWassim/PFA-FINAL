@@ -49,7 +49,7 @@ public class ModifierAppartementI extends JFrame {
 	JComboBox comboBoxStatut;
 	JComboBox comboBoxVille;
 	private JTextField txtid;
-	JCheckBox checkBoxAsc;
+	public JCheckBox checkBoxAsc;
 	String ss="";
 	private Object s;
 	/**
@@ -340,9 +340,7 @@ public class ModifierAppartementI extends JFrame {
 
 
 
-	public void setComboBoxStatut(Object statut) {
-		this.comboBoxStatut.getSelectedItem().toString();
-	}
+	
 	public void setTxtsurface(String txt) {
 		this.txtsurface .setText(txt);
 	}
@@ -358,6 +356,8 @@ public class ModifierAppartementI extends JFrame {
 	public void setTxtid(String txt) {
 		this.txtid.setText(txt);
 	}
+
+	
 
 
 

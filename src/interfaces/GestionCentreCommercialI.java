@@ -21,6 +21,7 @@ import javax.swing.UIManager;
 
 import java.awt.SystemColor;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -29,10 +30,16 @@ import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
+import objet.Centre;
 import objet.TableModelCentre;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JScrollPane;
+
+import dao.CentreDAO;
+import javax.swing.DefaultComboBoxModel;
 
 public class GestionCentreCommercialI extends JFrame {
 
@@ -88,12 +95,19 @@ public class GestionCentreCommercialI extends JFrame {
 		JLabel label_1 = new JLabel("Ville :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JComboBox boxville = new JComboBox();
+		final JComboBox boxville = new JComboBox();
+		boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		
 		JLabel label_2 = new JLabel("Filtrer");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton filtrer = new JButton("");
+		filtrer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String condition = " where prix ='"+prix.getText()+"' and ville ='"+boxville.getSelectedItem()+"'";
+				((TableModelCentre)table.getModel()).refreshRecherche(condition);
+			}
+		});
 		filtrer.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/rechercher.gif")));
 		filtrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -144,20 +158,50 @@ public class GestionCentreCommercialI extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModifierCentreCommercialI m = new ModifierCentreCommercialI();
-				m.setVisible(true);
+				
+				
+				String id=(model.getValueAt(table.getSelectedRow(),1).toString());
+				String description=(String)(model.getValueAt(table.getSelectedRow(),3));
+				String surface=(String)(model.getValueAt(table.getSelectedRow(),4));
+				String prix=(String)model.getValueAt(table.getSelectedRow(),5);
+	
+				String ville=(String)model.getValueAt(table.getSelectedRow(),6);
+				String rue=(String)model.getValueAt(table.getSelectedRow(),7);
+				String code=(String)model.getValueAt(table.getSelectedRow(),8);
+				String statut=(String)model.getValueAt(table.getSelectedRow(),9);
+			
+				ModifierCentreCommercialI modifierTerrainI = new ModifierCentreCommercialI(id,description,surface, prix,ville, rue,code, statut);
+				modifierTerrainI.setTxtid(id);
+				modifierTerrainI.setTxtdescription(description);
+				modifierTerrainI.setTxtcodepostal(code);
+				modifierTerrainI.setTxtprix(prix);
+				modifierTerrainI.setTxtrue(rue);
+				modifierTerrainI.setTxtsurface(surface);
+				modifierTerrainI.setBoxstatut(statut);
+				modifierTerrainI.setVillebox(ville);
+				modifierTerrainI.setVisible(true);
+				
+				
 			}
 		});
 		btnModifier.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/modifier.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Centre c = new Centre();
+				 
+				c.setId(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
+			
+				new CentreDAO().delete(c);
+				
+				JOptionPane.showMessageDialog(null, "Centre Commercial Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnSupprimer.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/supprimer.png")));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-
-		
-		table = new JTable();
-		table.setModel(model);
 		/*table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null, null, null, null, null},
@@ -170,7 +214,8 @@ public class GestionCentreCommercialI extends JFrame {
 				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));*/
-		table.setBackground(SystemColor.inactiveCaption);
+		
+		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -182,17 +227,18 @@ public class GestionCentreCommercialI extends JFrame {
 					.addGap(162)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(198, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(189, Short.MAX_VALUE)
+					.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+					.addGap(166)
+					.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+					.addGap(141)
+					.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+					.addGap(198))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(28)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
-							.addGap(91)
-							.addComponent(table, GroupLayout.PREFERRED_SIZE, 562, GroupLayout.PREFERRED_SIZE))
-						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(297, Short.MAX_VALUE))
+					.addGap(83)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 929, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(108, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -201,19 +247,22 @@ public class GestionCentreCommercialI extends JFrame {
 					.addComponent(lblGestionDesCentres, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 					.addGap(64)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(83)
-							.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addGap(55)
-							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(164)
-							.addComponent(table, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
-					.addGap(151))
+					.addGap(69)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+					.addGap(104))
 		);
+		
+				
+				table = new JTable();
+				scrollPane.setViewportView(table);
+				
+				table.setModel(model);
+				table.setBackground(SystemColor.inactiveCaption);
 		contentPane.setLayout(gl_contentPane);
 		 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		 this.setLocationRelativeTo(null);

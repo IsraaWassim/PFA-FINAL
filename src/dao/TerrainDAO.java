@@ -9,6 +9,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
 
 import objet.Appartemment;
+import objet.Client;
 import objet.Terrain;
 
 
@@ -21,6 +22,10 @@ public class TerrainDAO {
 	{
 		sf=new AnnotationConfiguration().configure().buildSessionFactory();
 		session=sf.openSession();
+	}
+	public Terrain findterrain(Integer id){
+		session.beginTransaction();
+		return (Terrain) session.get(Terrain.class, id);
 	}
 	public void save(Terrain a)
 	{

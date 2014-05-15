@@ -52,15 +52,14 @@ public class ModifierClient extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					String id=null;
-				    String typeClient=null;
-					String nom=null;
-					String prenom=null;
-					String cin=null;
-					String mail=null;
-					String tel=null;
-					String Description=null;
-					
+					String id="";
+				    String typeClient="";
+					String nom="";
+					String prenom="";
+					String cin="";
+					String mail="";
+					String tel="";
+					String Description="";
 					ModifierClient frame = new ModifierClient(id,typeClient,nom,prenom,cin,mail,tel,Description);
 					
 					frame.setVisible(true);
@@ -276,4 +275,43 @@ public class ModifierClient extends JDialog {
 		contentPane.setLayout(gl_contentPane);
 		setVisible(true);
 	}
+
+	public void setTxtnom(String txt) {
+		this.txtnom.setText(txt);
+	}
+
+	public void setTxtprenom(String txt) {
+		this.txtprenom .setText(txt);
+	}
+
+	public void setTxtcin(String txt) {
+		
+		this.txtcin .setText(txt);
+	}
+
+	public void setTxtmail(String txt) {
+		this.txtmail.setText(txt);
+		
+	}
+
+	public void setTxttel(String txt) {
+	
+		this.txttel.setText(txt);
+	}
+
+	public void setTxtdescription(String txt) {
+		
+		this.txtdescription.setText(txt);
+	}
+
+	public void setComboBoxClient(Object typeClient) {
+		comboBoxClient.addItem("Locataire");
+		comboBoxClient.addItem("Acheteur");
+		this.comboBoxClient.setSelectedItem(typeClient);
+	}
+
+	public void setTxtid(String txt) {
+		this.txtid = txtid;
+	}
+	
 }
