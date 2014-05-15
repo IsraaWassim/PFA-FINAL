@@ -408,7 +408,7 @@ public class AjouterCentreCommercialI extends JFrame {
 					 
 			      CentreDAO adao=new CentreDAO();
 			      ProprietaireDAO pdao=new ProprietaireDAO();
-			      Centre ap=new Centre( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
+			      Centre ap=new Centre( description.getText(),surface.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),z);
 Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
 ap.setProprietaire(pr);
 adao.save(ap);
@@ -427,6 +427,10 @@ adao.save(ap);
 				cin.setText(null);
 				prenom.setText(null);
 				nom.setText(null);
+				//jtable
+				AjouterCentreCommercialI.this.hide();
+				GestionCentreCommercialI ap8 =new GestionCentreCommercialI();
+				ap8.setVisible(true);
 				    }
 			}
 		});

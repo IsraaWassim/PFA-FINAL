@@ -289,6 +289,10 @@ cin.setText(null);
 prenom.setText(null);
 nom.setText(null);
 				JOptionPane.showMessageDialog(null, "Appartemment & Proprietaire  ajoutés avec succés !");
+				
+				AjouterAppartementI.this.hide();
+				GestionApparI ap8 =new GestionApparI();
+				ap8.setVisible(true);
 				    }
 			}
 	

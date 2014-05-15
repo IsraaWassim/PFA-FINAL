@@ -138,7 +138,19 @@ public class ModifierCentreCommercialI extends JFrame {
 				a.setSurface(txtsurface.getText());
 				cd.update(a);
 				
-				  JOptionPane.showMessageDialog(null, "Centre Commercial Modifier ", "OK", JOptionPane.INFORMATION_MESSAGE);
+				  JOptionPane.showMessageDialog(null, "Centre Commercial Modifié ", "OK", JOptionPane.INFORMATION_MESSAGE);
+				  
+				// Pour vider les champs
+					
+					txtcode.setText("");
+					txtrue.setText("");
+					txtprix.setText("");
+					txtsurface.setText("");
+					textArea.setText("");
+	
+					ModifierCentreCommercialI.this.hide();
+					GestionCentreCommercialI ap8 =new GestionCentreCommercialI();
+					ap8.setVisible(true);
 			}
 		});
 		valider.setIcon(new ImageIcon(ModifierCentreCommercialI.class.getResource("/Images/acept-verifier-corriger-vert-ok-oui-icone-9668-128.png")));

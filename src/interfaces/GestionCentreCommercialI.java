@@ -149,6 +149,7 @@ public class GestionCentreCommercialI extends JFrame {
 		JButton ajouter = new JButton("Ajouter ");
 		ajouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GestionCentreCommercialI.this.hide();
 			AjouterCentreCommercialI i = new AjouterCentreCommercialI();
 			i.setVisible(true);
 			}
@@ -172,18 +173,18 @@ public class GestionCentreCommercialI extends JFrame {
 				String code=(String)model.getValueAt(table.getSelectedRow(),8);
 				String statut=(String)model.getValueAt(table.getSelectedRow(),9);
 			
-				ModifierCentreCommercialI modifierTerrainI = new ModifierCentreCommercialI(id,description,surface, prix,ville, rue,code, statut);
-				modifierTerrainI.setTxtid(id);
-				modifierTerrainI.setTxtdescription(description);
-				modifierTerrainI.setTxtcodepostal(code);
-				modifierTerrainI.setTxtprix(prix);
-				modifierTerrainI.setTxtrue(rue);
-				modifierTerrainI.setTxtsurface(surface);
-				modifierTerrainI.setBoxstatut(statut);
-				modifierTerrainI.setVillebox(ville);
+				ModifierCentreCommercialI modifiercentreI = new ModifierCentreCommercialI(id,description,surface, prix,ville, rue,code, statut);
+				modifiercentreI.setTxtid(id);
+				modifiercentreI.setTxtdescription(description);
+				modifiercentreI.setTxtcodepostal(code);
+				modifiercentreI.setTxtprix(prix);
+				modifiercentreI.setTxtrue(rue);
+				modifiercentreI.setTxtsurface(surface);
+				modifiercentreI.setBoxstatut(statut);
+				modifiercentreI.setVillebox(ville);
+				GestionCentreCommercialI.this.hide();
 				
-				
-				modifierTerrainI.setVisible(true);
+				modifiercentreI.setVisible(true);
 				
 				
 				

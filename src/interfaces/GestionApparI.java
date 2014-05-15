@@ -87,6 +87,7 @@ public class GestionApparI extends JFrame {
 		JButton btnAjouter = new JButton("Ajouter");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				GestionApparI.this.hide();
 				AjouterAppartementI a = new AjouterAppartementI();
 				a.setVisible(true);
 			}
@@ -118,7 +119,10 @@ public class GestionApparI extends JFrame {
 				modifierAppartementI.setTxtprix(prix);
 				modifierAppartementI.setTxtrue(rue);
 				modifierAppartementI.setTxtsurface(surface);
-				
+				modifierAppartementI.setComboBoxVille(ville);
+				modifierAppartementI.setComboBoxStatut(statut);
+				modifierAppartementI.setComboBoxStatut(etage);
+				GestionApparI.this.hide();
 				modifierAppartementI.setVisible(true);
 				
 		
@@ -170,11 +174,10 @@ public class GestionApparI extends JFrame {
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				String condition = " where prix ='"+prix.getText()+"' and ville ='"+boxville.getSelectedItem()+"'";
-				((TableModelAppartement)table.getModel()).refreshRecherche(condition);
-			}
-		});
+			
+					String condition = " where prix ='"+prix.getText()+"' and ville ='"+boxville.getSelectedItem()+"'";
+					((TableModelAppartement)table.getModel()).refreshRecherche(condition);
+				}});
 		button.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/rechercher.gif")));
 		button.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel = new GroupLayout(panel);

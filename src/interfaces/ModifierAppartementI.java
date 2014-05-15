@@ -48,10 +48,11 @@ public class ModifierAppartementI extends JFrame {
 	JTextArea txtdescription ;
 	JComboBox comboBoxStatut;
 	JComboBox comboBoxVille;
-	private JTextField txtid;
 	public JCheckBox checkBoxAsc;
 	String ss="";
 	private Object s;
+	JComboBox boxEtage;
+	private JTextField txtid;
 	/**
 	 * Launch the application.
 	 */
@@ -104,16 +105,17 @@ public class ModifierAppartementI extends JFrame {
 		txtdescription.setText(description);
 		txtprix.setText(prix);*/
 		
-		JButton btnModifier = new JButton("Modifier");
+		JButton btnModifier = new JButton("Valider");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
 				
 				
 				AppartemmentDAO cd = new AppartemmentDAO();
-			    Appartemment a = cd.findAppartemment(new Integer(Integer.parseInt(txtid.getText())));	
+			    Appartemment a =  cd.findAppartemment(new Integer(Integer.parseInt(txtid.getText())));	
 				a.setStatut(comboBoxStatut.getSelectedItem().toString());
 				a.setVille(comboBoxVille.getSelectedItem().toString());
+				a.setEtage(boxEtage.getSelectedItem().toString());
 		        if(checkBoxAsc.isSelected()){ ss="Oui";}else ss="Non";
 				a.setAscenseur(ss);
 				a.setCode(txtcode.getText());
@@ -124,17 +126,27 @@ public class ModifierAppartementI extends JFrame {
 				cd.update(a);
 				
 				
-				  JOptionPane.showMessageDialog(null, "Client Modifier ", "OK", JOptionPane.INFORMATION_MESSAGE);
+				  JOptionPane.showMessageDialog(null, "Appartement Modifié ", "OK", JOptionPane.INFORMATION_MESSAGE);
 				
 			
 					// Pour vider les champs
-				  
 				
-					 
+					txtcode.setText("");
+					txtrue.setText("");
+					txtprix.setText("");
+					txtsurface.setText("");
+					txtdescription.setText("");
+					checkBoxAsc.setSelected(false);
+				
+					ModifierAppartementI.this.hide();
+					GestionApparI ap8 =new GestionApparI();
+					ap8.setVisible(true);
+	                
+					
 			}
 		});
 	
-		btnModifier.setIcon(new ImageIcon(ModifierAppartementI.class.getResource("/Images/modifier.png")));
+		btnModifier.setIcon(new ImageIcon(ModifierAppartementI.class.getResource("/Images/acept-verifier-corriger-vert-ok-oui-icone-9668-128.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton Annuler = new JButton("Annuler");
@@ -163,6 +175,7 @@ public class ModifierAppartementI extends JFrame {
 		label_5.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 comboBoxStatut = new JComboBox();
+		 comboBoxStatut.setModel(new DefaultComboBoxModel(new String[] {"Location", "Achat"}));
 		comboBoxStatut.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JLabel label_6 = new JLabel("Description :");
@@ -177,14 +190,18 @@ public class ModifierAppartementI extends JFrame {
 		 checkBoxAsc = new JCheckBox();
 		checkBoxAsc.setBackground(Color.WHITE);
 		
-		JLabel lblIdAppartement = new JLabel("ID Appartement:");
-		lblIdAppartement.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblEtage = new JLabel("Etage :");
+		lblEtage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		 boxEtage = new JComboBox();
+		boxEtage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		boxEtage.setModel(new DefaultComboBoxModel(new String[] {"Etage 1", "Etage 2", "Etage 3", "Etage 4", "Etage 5", "Etage 6", "Etage 7", "Etage 8", "Etage 9"}));
 		
 		txtid = new JTextField();
 		txtid.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -200,32 +217,37 @@ public class ModifierAppartementI extends JFrame {
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
 										.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 99, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
-									.addGap(23)
+										.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(81)
+											.addComponent(lblEtage)
+											.addGap(136)
+											.addComponent(boxEtage, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+											.addGap(87)
+											.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
 											.addComponent(comboBoxStatut, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-											.addGap(108)
-											.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-											.addGap(38)
-											.addComponent(checkBoxAsc, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
-										.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)))
+											.addGap(53))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(23)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+												.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+												.addComponent(checkBoxAsc, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+											.addPreferredGap(ComponentPlacement.RELATED, 555, Short.MAX_VALUE))))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addComponent(txtid, GroupLayout.PREFERRED_SIZE, 8, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 									.addGap(18)
-									.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 687, GroupLayout.PREFERRED_SIZE)))
-							.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE))
+									.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 687, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(307)
 							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 134, GroupLayout.PREFERRED_SIZE)
-							.addGap(71)
-							.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(391)
-							.addComponent(lblIdAppartement)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addGap(74)
+							.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -233,13 +255,15 @@ public class ModifierAppartementI extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(11)
 					.addComponent(lblModifierAppartement, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblIdAppartement)
-						.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
+					.addGap(76)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-					.addGap(46)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(boxEtage, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEtage)
+						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxStatut, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addGap(14)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
@@ -247,14 +271,11 @@ public class ModifierAppartementI extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addGap(58)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(checkBoxAsc, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(comboBoxStatut, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))))
+					.addGap(56)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(label_7, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkBoxAsc, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+					.addGap(2)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(71)
@@ -262,11 +283,13 @@ public class ModifierAppartementI extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(26)
 							.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)))
-					.addGap(27)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addGap(44))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(Annuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(16))
 		);
 		
 		txtcode = new JTextField();
@@ -280,6 +303,7 @@ public class ModifierAppartementI extends JFrame {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 comboBoxVille = new JComboBox(new Object[]{});
+		 comboBoxVille.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		comboBoxVille.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		txtrue = new JTextField();
@@ -353,14 +377,28 @@ public class ModifierAppartementI extends JFrame {
 		this.txtdescription .setText(txt);
 	}
 
+	
+
+	public void setComboBoxStatut(Object statut) {
+		this.comboBoxStatut.setSelectedItem(statut);
+	}
+
+	public void setCheckBoxAsc(JCheckBox checkBoxAsc) {
+		this.checkBoxAsc = checkBoxAsc;
+	}
+
+
+
 	public void setTxtid(String txt) {
 		this.txtid.setText(txt);
 	}
 
+	public void setComboBoxVille(Object ville) {
+		this.comboBoxVille.setSelectedItem(ville);
+	}
 	
-
-
-
-	
+	public void setboxEtage(Object etage) {
+		this.boxEtage.setSelectedItem(etage);
+	}
 }
 
