@@ -159,6 +159,7 @@ public class AjouterAppartementI extends JFrame {
 		cin = new JTextField();
 		cin.setColumns(10);
 		cin.setBackground(SystemColor.inactiveCaptionBorder);
+	
 		cin.addKeyListener(new KeyAdapter() {
 			@Override
 		public void keyTyped(KeyEvent evt) {

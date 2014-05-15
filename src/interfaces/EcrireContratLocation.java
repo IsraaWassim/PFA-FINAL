@@ -57,6 +57,12 @@ public class EcrireContratLocation extends JFrame {
 	JComboBox boxnomP;
 	   String tab[];
 	   ClientDAO clientDAO;
+	   private JTextField cin;
+	   private JTextField mail;
+	   private JTextField tel;
+	   private JTextField textField;
+	   private JTextField textField_1;
+	   private JTextField textField_2;
 
 
 
@@ -119,16 +125,49 @@ public class EcrireContratLocation extends JFrame {
 		});
 		boxnomP.setModel(clientDAO.getaModel());
 		
+		cin = new JTextField();
+		cin.setColumns(10);
+		
+		JLabel lblCin = new JLabel("CIN :");
+		lblCin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		mail = new JTextField();
+		mail.setColumns(10);
+		
+		JLabel lblMail = new JLabel("Mail :");
+		lblMail.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JLabel lblTlphone = new JLabel("T\u00E9l\u00E9phone :");
+		lblTlphone.setFont(new Font("Dialog", Font.PLAIN, 15));
+		
+		tel = new JTextField();
+		tel.setColumns(10);
+		
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(269)
-					.addComponent(lblNomEtPrnom)
+					.addGap(37)
+					.addComponent(lblCin)
+					.addGap(30)
+					.addComponent(cin, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+					.addGap(42)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblNomEtPrnom)
+						.addComponent(lblMail))
 					.addGap(55)
-					.addComponent(boxnomP, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(70, Short.MAX_VALUE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(mail, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+							.addComponent(lblTlphone)
+							.addGap(70)
+							.addComponent(tel, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+							.addGap(114))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(boxnomP, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(413, Short.MAX_VALUE))))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -137,7 +176,15 @@ public class EcrireContratLocation extends JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNomEtPrnom)
 						.addComponent(boxnomP, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(87, Short.MAX_VALUE))
+					.addGap(38)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(cin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCin)
+						.addComponent(tel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTlphone)
+						.addComponent(mail, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblMail))
+					.addContainerGap(29, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		
@@ -149,6 +196,24 @@ public class EcrireContratLocation extends JFrame {
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JComboBox boxNomL = new JComboBox();
+		
+		JLabel label_1 = new JLabel("CIN :");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		
+		JLabel label_2 = new JLabel("Mail :");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		
+		JLabel label_3 = new JLabel("T\u00E9l\u00E9phone :");
+		label_3.setFont(new Font("Dialog", Font.PLAIN, 15));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -156,8 +221,21 @@ public class EcrireContratLocation extends JFrame {
 					.addGap(271)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
 					.addGap(60)
-					.addComponent(boxNomL, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(70, Short.MAX_VALUE))
+					.addComponent(boxNomL, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(67)
+					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGap(30)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)
+					.addGap(95)
+					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addGap(55)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addGap(82)
+					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 129, GroupLayout.PREFERRED_SIZE)
+					.addGap(69))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -167,7 +245,21 @@ public class EcrireContratLocation extends JFrame {
 							.addContainerGap()
 							.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
 						.addComponent(boxNomL, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(97, Short.MAX_VALUE))
+					.addGap(25)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addGap(1)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGap(1)
+									.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+										.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
+					.addContainerGap(16, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
@@ -206,61 +298,57 @@ public class EcrireContratLocation extends JFrame {
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(94)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 1045, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(lblContratDeLocation, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
-								.addGap(209))
-							.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1045, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap())
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(lblDateDebut)
-								.addGap(34)
-								.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)
-								.addGap(209)
-								.addComponent(lblDateFin, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-								.addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addComponent(btnImprimer, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(dateChooser2, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
-										.addGap(44)
-										.addComponent(datesig, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-										.addGap(44)
-										.addComponent(dateChooser3, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
-								.addContainerGap())
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-								.addGap(76)
-								.addComponent(lblDescription)
-								.addGap(41)
-								.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
-								.addContainerGap()))))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblDateDebut)
+									.addGap(34)
+									.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)
+									.addGap(209)
+									.addComponent(lblDateFin, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnImprimer, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(dateChooser2, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
+											.addGap(44)
+											.addComponent(datesig, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+											.addGap(44)
+											.addComponent(dateChooser3, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(77)
+									.addComponent(lblDescription)
+									.addGap(40)
+									.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE))
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 1045, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(lblContratDeLocation, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
+							.addGap(289))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblContratDeLocation, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(11)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGap(32)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(35)
-							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE))
+							.addGap(63)
+							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 20, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(95)
-							.addComponent(lblDescription)))
-					.addPreferredGap(ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+							.addComponent(lblDescription)
+							.addGap(113)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblDateDebut)
@@ -277,5 +365,4 @@ public class EcrireContratLocation extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	}
-
 }

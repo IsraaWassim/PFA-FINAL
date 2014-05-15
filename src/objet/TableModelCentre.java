@@ -7,6 +7,7 @@ import java.util.*;
 
 import javax.swing.table.AbstractTableModel; 
 
+import dao.AppartemmentDAO;
 import dao.CentreDAO;
 
 public class TableModelCentre extends AbstractTableModel
@@ -41,7 +42,11 @@ public class TableModelCentre extends AbstractTableModel
         return values[columnIndex];
         
     }
-
+    public void refreshSupp() {
+    	   CentreDAO centreDAO = new CentreDAO();
+           centreList = centreDAO.getAllCentre();
+    	fireTableDataChanged();
+    }
     @Override
     public String getColumnName(int column)
     {

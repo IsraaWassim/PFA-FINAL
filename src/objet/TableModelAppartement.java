@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
 import dao.AppartemmentDAO;
+import dao.CentreDAO;
 
 public class TableModelAppartement extends AbstractTableModel
 {
@@ -42,5 +43,16 @@ public class TableModelAppartement extends AbstractTableModel
     {
         String[] columnNames=new String[]{"Id Proprietaire","Id Apparetemment","Nom & Prenom","Description","Prix","Ville","Rue","Code Postal","Ascenseur","Surface","Statut","Etage"};
         return columnNames[column];
+    }
+  
+    public void refreshSupp() {
+    	AppartemmentDAO cd = new AppartemmentDAO();
+    	 appartemmentList = cd.getAllAppartement();
+    	fireTableDataChanged();
+    }
+    public void refreshRecherche(String condition) {
+    	AppartemmentDAO cd = new AppartemmentDAO();
+    	appartemmentList = cd.getAllAppartemmentRecherche(condition);
+    	fireTableDataChanged();
     }
 }

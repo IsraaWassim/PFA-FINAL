@@ -409,23 +409,24 @@ public class AjouterTerrainI extends JFrame {
 				    
 			      TerrainDAO adao=new TerrainDAO();
 			      ProprietaireDAO pdao=new ProprietaireDAO();
-Terrain ap=new Terrain( description.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),surface.getText(),z);
+Terrain ap=new Terrain( description.getText(),surface.getText(), prix.getText(),y,rue.getText(),codepostal.getText(),z);
 Proprietaire pr=new Proprietaire(nom.getText(),prenom.getText(),cin.getText(),mail.getText(),tel.getText());		
 ap.setProprietaire(pr);
 adao.save(ap);
 
-//Pour vider les champs
-codepostal.setText(null);
-surface.setText(null);
-prix.setText(null);
-description.setText(null);
-rue.setText(null);
-tel.setText(null);
-mail.setText(null);
-cin.setText(null);
-prenom.setText(null);
-nom.setText(null);
+
 				JOptionPane.showMessageDialog(null, "Terrain & Proprietaire  ajoutés avec succés !");
+				//Pour vider les champs
+				codepostal.setText(null);
+				surface.setText(null);
+				prix.setText(null);
+				description.setText(null);
+				rue.setText(null);
+				tel.setText(null);
+				mail.setText(null);
+				cin.setText(null);
+				prenom.setText(null);
+				nom.setText(null);
 				    }
 			}
 	

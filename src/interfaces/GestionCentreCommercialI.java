@@ -39,6 +39,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
 import dao.CentreDAO;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class GestionCentreCommercialI extends JFrame {
@@ -157,6 +158,7 @@ public class GestionCentreCommercialI extends JFrame {
 		
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				
 				
@@ -179,7 +181,10 @@ public class GestionCentreCommercialI extends JFrame {
 				modifierTerrainI.setTxtsurface(surface);
 				modifierTerrainI.setBoxstatut(statut);
 				modifierTerrainI.setVillebox(ville);
+				
+				
 				modifierTerrainI.setVisible(true);
+				
 				
 				
 			}
@@ -196,24 +201,13 @@ public class GestionCentreCommercialI extends JFrame {
 				c.setId(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
 			
 				new CentreDAO().delete(c);
-				
+				((TableModelCentre)table.getModel()).refreshSupp();
 				JOptionPane.showMessageDialog(null, "Centre Commercial Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnSupprimer.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/supprimer.png")));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		/*table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
-			}
-		));*/
+	
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

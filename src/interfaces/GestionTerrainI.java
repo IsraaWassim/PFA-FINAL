@@ -46,6 +46,7 @@ public class GestionTerrainI extends JFrame {
 	private JPanel contentPane;
 	private JTextField prix;
 	private JTable table;
+	JComboBox boxville;
 	TableModelTerrain model;
 
 	/**
@@ -96,7 +97,7 @@ public class GestionTerrainI extends JFrame {
 		JLabel label_1 = new JLabel("Ville :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JComboBox boxville = new JComboBox();
+		 boxville = new JComboBox();
 		boxville.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
@@ -104,6 +105,13 @@ public class GestionTerrainI extends JFrame {
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton filtrer = new JButton("");
+		filtrer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String condition = " where prix ='"+prix.getText()+"' and ville ='"+boxville.getSelectedItem()+"'";
+				((TableModelTerrain)table.getModel()).refreshRecherche(condition);
+			}
+		});
 		filtrer.setIcon(new ImageIcon(GestionTerrainI.class.getResource("/Images/rechercher.gif")));
 		filtrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -190,7 +198,8 @@ public class GestionTerrainI extends JFrame {
 				c.setId(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
 			
 				new TerrainDAO().delete(c);
-				
+				((TableModelTerrain)table.getModel()).refreshSupp();
+
 				JOptionPane.showMessageDialog(null, "Terrain Supprimé", "OK", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
@@ -220,8 +229,8 @@ public class GestionTerrainI extends JFrame {
 							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1045, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(65, Short.MAX_VALUE))
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -232,12 +241,12 @@ public class GestionTerrainI extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
 					.addGap(31)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-					.addGap(83)
+					.addGap(129)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(192, Short.MAX_VALUE))
+					.addContainerGap(146, Short.MAX_VALUE))
 		);
 		
 		table = new JTable();

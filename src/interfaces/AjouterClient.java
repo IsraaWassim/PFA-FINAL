@@ -104,7 +104,7 @@ public class AjouterClient extends JFrame {
 		cin = new JTextField();
 		cin.setColumns(10);
 		cin.setBackground(SystemColor.inactiveCaptionBorder);
-		
+	    
 		JLabel label_1 = new JLabel("E-Mail :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

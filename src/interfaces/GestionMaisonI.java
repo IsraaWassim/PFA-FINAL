@@ -170,6 +170,8 @@ public class GestionMaisonI extends JFrame {
 				c.setId(Integer.parseInt(model.getValueAt(table.getSelectedRow(),1).toString()));
 			
 				new MaisonDAO().delete(c);
+				((TableModelMaison)table.getModel()).refreshSupp();
+
 				
 				JOptionPane.showMessageDialog(null, "Maison Supprimée", "OK", JOptionPane.INFORMATION_MESSAGE);
 			}

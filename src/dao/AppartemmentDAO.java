@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import objet.Appartemment;
+import objet.Centre;
 import objet.Client;
 import objet.HibernateUtil;
 import objet.Proprietaire;
@@ -58,28 +59,16 @@ public List<Appartemment> getAllAppartement() {
 	}
 	
 
-	/*
-	 * public List<Adresse> getClient() { List<Client>
-	 * l=session.createQuery("from objet.Client").list();
-	 * System.out.println(l.get(1).getCin()+l.get(1).getNom()); return l; }
-	 * 
-	 * public List<Client> getClientById(int id) { List<Client>
-	 * l=session.createQuery("from objet.Client where id="+id+" ").list();
-	 * 
-	 * return l;
-	 * 
-	 * }
-	 * 
-	 * public void updateClient(int id,String nom) {
-	 * 
-	 * Transaction tf=session.beginTransaction(); org.hibernate.Query
-	 * q1=session.
-	 * createQuery("update objet.Client set nom='"+nom+"'  where id='"+id+"'");
-	 * int rowCount = q1.executeUpdate(); System.out.println("Rows affected: " +
-	 * rowCount); tf.commit();
-	 * 
-	 * }
-	 */
+public List<Appartemment> getAllAppartemmentRecherche(String condition) {
+//	ze
+session.beginTransaction();
+	Query query = session.createQuery("from Appartemment "+condition);
+	List<Appartemment> list= query.list();
+	System.out.println(list.toString());
+	return list;
+
+}
+
 
 	public void closeConnection() {
 		session.close();

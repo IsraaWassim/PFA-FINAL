@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
 import dao.AppartemmentDAO;
+import dao.CentreDAO;
 import dao.TerrainDAO;
 
 public class TableModelTerrain extends AbstractTableModel
@@ -34,7 +35,7 @@ public class TableModelTerrain extends AbstractTableModel
     {
         return 10;
     }
-
+    
     public Object getValueAt(int rowIndex, int columnIndex)
     {
     	Terrain p=terrainList.get(rowIndex);
@@ -43,11 +44,20 @@ public class TableModelTerrain extends AbstractTableModel
         return values[columnIndex];
         
     }
-
+    public void refreshSupp() {
+    	TerrainDAO terrainDAO = new TerrainDAO();
+        terrainList = terrainDAO.getAllTerrain();
+ 	fireTableDataChanged();
+ }
     @Override
     public String getColumnName(int column)
     {
-        String[] columnNames=new String[]{"Id Proprietaire","Id Terrain","Nom & Prenom","Description","Surface","Prix","Ville","Rue","Code Postal","Statut"};
+        String[] columnNames=new String[]{"Id Proprietaire","Id Centre","Nom & Prenom","Description","Surface","Prix","Ville","Rue","Code Postal","Statut"};
         return columnNames[column];
+    }
+    public void refreshRecherche(String condition) {
+    	TerrainDAO cd = new TerrainDAO();
+    	terrainList = cd.getAllTerrainRecherche(condition);
+    	fireTableDataChanged();
     }
 }

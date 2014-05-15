@@ -55,7 +55,15 @@ public class TerrainDAO {
 		return list;
 
 	}
-	
+	public List<Terrain> getAllTerrainRecherche(String condition) {
+//		ze
+	session.beginTransaction();
+		Query query = session.createQuery("from Terrain "+condition);
+		List<Terrain> list= query.list();
+		System.out.println(list.toString());
+		return list;
+
+	}
 	public void closeConnection()
 	{
 		session.close();

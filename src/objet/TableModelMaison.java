@@ -8,6 +8,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
+import dao.CentreDAO;
 import dao.MaisonDAO;
 
 public class TableModelMaison extends AbstractTableModel
@@ -33,6 +34,11 @@ public class TableModelMaison extends AbstractTableModel
     {
         return 13;
     }
+    public void refreshSupp() {
+    	MaisonDAO maisonDAO = new MaisonDAO();
+        maisonList = maisonDAO.getAllMaison();
+ 	fireTableDataChanged();
+ }
 
     public Object getValueAt(int rowIndex, int columnIndex)
     {
