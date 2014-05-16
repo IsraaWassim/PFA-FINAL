@@ -20,5 +20,48 @@
 	<classpathentry kind="lib" path="C:/Users/USER/workspace/hibernate/lib/slf4j-api-1.5.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/USER/workspace/hibernate/lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/USER/workspace/hibernate/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/animation-1.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/com.azalea.ufl.barcode.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/com.ibm.icu_4.4.2.v20110208.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/commons-configuration-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/commons-lang-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/CrystalCommon2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/CrystalReportsRuntime.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/DatabaseConnectors.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/DJNativeSwing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/DJNativeSwing-SWT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/eltima-componentsDemo.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/forms-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/imap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/imgResizer.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/japura-1.14.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/java-mail-1.4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jcalendar-1.3.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/JDBInterface.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jdom-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jdom-2.0.3-contrib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jdom-2.0.3-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jdom-2.0.3-junit.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jdom-2.0.3-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jgui203.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/jpedal.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/keycodeDecoder.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/l2fprod-common-7.3-20070317.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/logging.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/looks-1.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/miglayout-3.5.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/QueryBuilder.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/sqljdbc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/TableLayout.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/Test.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USER/Desktop/List_Libs/lib/zeus-jscl-1.70.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

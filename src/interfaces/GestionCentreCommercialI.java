@@ -48,6 +48,7 @@ public class GestionCentreCommercialI extends JFrame {
 	private JTextField prix;
 	TableModelCentre model;
 	private JTable table;
+	 JComboBox boxville;
 
 	/**
 	 * Launch the application.
@@ -96,7 +97,7 @@ public class GestionCentreCommercialI extends JFrame {
 		JLabel label_1 = new JLabel("Ville :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		final JComboBox boxville = new JComboBox();
+		 boxville = new JComboBox();
 		boxville.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		boxville.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		
@@ -190,7 +191,7 @@ public class GestionCentreCommercialI extends JFrame {
 				
 			}
 		});
-		btnModifier.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/modifier.png")));
+		btnModifier.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/modifier-icone-7876-128.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
@@ -211,26 +212,38 @@ public class GestionCentreCommercialI extends JFrame {
 	
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JButton Rafraîchir = new JButton("Rafra\u00EEchir");
+		Rafraîchir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				((TableModelCentre)table.getModel()).refreshTable();
+				prix.setText(null);
+			}
+		});
+		Rafraîchir.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/modifier.png")));
+		Rafraîchir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(189, Short.MAX_VALUE)
+					.addGap(53)
 					.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addGap(166)
-					.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addGap(141)
+					.addGap(172)
 					.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addGap(198))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addPreferredGap(ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+					.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+					.addGap(137)
+					.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+					.addGap(30))
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(101)
 					.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(131))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(26)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1076, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(18, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(331)
 					.addComponent(lblGestionDesCentres, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(355, Short.MAX_VALUE))
@@ -244,12 +257,18 @@ public class GestionCentreCommercialI extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
 					.addGap(70)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addGap(104))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(112)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(ajouter)
+								.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(113)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))))
+					.addGap(118))
 		);
 		
 				

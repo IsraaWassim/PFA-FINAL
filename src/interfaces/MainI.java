@@ -1,9 +1,9 @@
 package interfaces;
 
-public class Main {
+public class MainI {
 
 	public static void main(String[] args) {
-MenuPrincipal a = new MenuPrincipal();
+Authentification a = new Authentification();
 a.setVisible(true);
 	}
 

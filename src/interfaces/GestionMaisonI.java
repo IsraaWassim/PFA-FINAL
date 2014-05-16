@@ -47,6 +47,7 @@ public class GestionMaisonI extends JFrame {
 	private JTextField prix;
 	private JTable table;
 	TableModelMaison model;
+	JComboBox boxville;
 
 	/**
 	 * Launch the application.
@@ -97,7 +98,7 @@ public class GestionMaisonI extends JFrame {
 		JLabel label_1 = new JLabel("Ville :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JComboBox boxville = new JComboBox();
+		 boxville = new JComboBox();
 		boxville.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		 boxville.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectonnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
@@ -106,6 +107,14 @@ public class GestionMaisonI extends JFrame {
 		lblRechercher.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton filtrer = new JButton("");
+		filtrer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String condition = " where prix ='"+prix.getText()+"' and ville ='"+boxville.getSelectedItem()+"'";
+				((TableModelMaison)table.getModel()).refreshRecherche(condition);
+				
+				
+			}
+		});
 		filtrer.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/rechercher.gif")));
 		filtrer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -155,11 +164,41 @@ public class GestionMaisonI extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModifierMaisonI m = new ModifierMaisonI();
-				m.setVisible(true);
+				
+				
+				String id=(model.getValueAt(table.getSelectedRow(),1).toString());		
+				String description=(String)(model.getValueAt(table.getSelectedRow(),3));
+				String surface=(String)(model.getValueAt(table.getSelectedRow(),4));
+				String prix=(String)model.getValueAt(table.getSelectedRow(),5);
+	
+				String ville=(String)model.getValueAt(table.getSelectedRow(),6);
+				String rue=(String)model.getValueAt(table.getSelectedRow(),7);
+				String code=(String)model.getValueAt(table.getSelectedRow(),8);
+				String nbrChambre=(String)model.getValueAt(table.getSelectedRow(),9);
+				String garage=(String)model.getValueAt(table.getSelectedRow(),10);
+				String jardin=(String)model.getValueAt(table.getSelectedRow(),11);
+				String statut=(String)model.getValueAt(table.getSelectedRow(),12);
+				//JOptionPane.showMessageDialog(null, idAppartement+" "+description+" "+prix+" "+ville+" "+rue+" "+code+" "+ascenseur+" "+surface+" "+statut+" "+etage);
+				//new ModifierAppartementI(idAppartement,description,prix,ville,rue,code,ascenseur,surface,statut,etage);
+				ModifierMaisonI modifierMaisonI = new ModifierMaisonI(id,description,surface,prix,ville,rue,code,nbrChambre,garage,jardin,statut);
+				modifierMaisonI.setTxtcode(code);
+				modifierMaisonI.setTxtdescription(description);
+				modifierMaisonI.setTxtid(idAppartement);
+				modifierMaisonI.setTxtprix(prix);
+				modifierMaisonI.setTxtrue(rue);
+				modifierMaisonI.setTxtsurface(surface);
+				modifierMaisonI.setComboBoxVille(ville);
+				modifierMaisonI.setComboBoxStatut(statut);
+				modifierMaisonI.setboxEtage(etage);
+				GestionMaisonI.this.hide();
+				modifierMaisonI.setVisible(true);
+				
+				
+				
+				
 			}
 		});
-		btnModifier.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/modifier.png")));
+		btnModifier.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/modifier-icone-7876-128.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
@@ -182,6 +221,19 @@ public class GestionMaisonI extends JFrame {
 		model = new TableModelMaison();
 		
 		JScrollPane scrollPane = new JScrollPane();
+		
+		JButton Rafraîchir = new JButton("Rafra\u00EEchir");
+		Rafraîchir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				((TableModelMaison)table.getModel()).refreshtable();
+				
+				prix.setText(null);
+				
+			}
+		});
+		Rafraîchir.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/modifier.png")));
+		Rafraîchir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -192,20 +244,20 @@ public class GestionMaisonI extends JFrame {
 							.addComponent(lblGestionDesMaisons, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(31)
-							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1079, Short.MAX_VALUE)))
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1079, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addGap(188)
+							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+							.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addGap(141)
+							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(99)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 914, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(215)
-					.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-					.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addGap(169)
-					.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
-					.addGap(123))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(99)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 914, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(107, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -217,10 +269,12 @@ public class GestionMaisonI extends JFrame {
 					.addGap(54)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 					.addGap(111)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+							.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+						.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(147, Short.MAX_VALUE))
 		);
 		

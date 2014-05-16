@@ -9,6 +9,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
 
 import objet.Appartemment;
+import objet.Centre;
 import objet.Maison;
 
 
@@ -21,6 +22,10 @@ public class MaisonDAO {
 	{
 		sf=new AnnotationConfiguration().configure().buildSessionFactory();
 		session=sf.openSession();
+	}
+	public Maison findMaison(Integer id){
+		session.beginTransaction();
+		return (Maison) session.get(Maison.class, id);
 	}
 	public void save(Maison a)
 	{
@@ -45,6 +50,15 @@ public class MaisonDAO {
 //		ze
 	session.beginTransaction();
 		Query query = session.createQuery("from Maison");
+		List<Maison> list= query.list();
+		System.out.println(list.toString());
+		return list;
+
+	}
+	public List<Maison> getAllMaisonRecherche(String condition) {
+//		ze
+	session.beginTransaction();
+		Query query = session.createQuery("from Maison "+condition);
 		List<Maison> list= query.list();
 		System.out.println(list.toString());
 		return list;

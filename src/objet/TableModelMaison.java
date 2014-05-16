@@ -39,7 +39,18 @@ public class TableModelMaison extends AbstractTableModel
         maisonList = maisonDAO.getAllMaison();
  	fireTableDataChanged();
  }
-
+    public void refreshtable() {
+    	MaisonDAO maisonDAO = new MaisonDAO();
+        maisonList = maisonDAO.getAllMaison();
+ 	fireTableDataChanged();
+ }
+    
+    public void refreshRecherche(String condition) {
+    	MaisonDAO maisonDAO = new MaisonDAO();
+        maisonList = maisonDAO.getAllMaisonRecherche(condition);
+       
+    	fireTableDataChanged();
+    }
     public Object getValueAt(int rowIndex, int columnIndex)
     {
     	Maison p=maisonList.get(rowIndex);

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="contratLocation")
-public class ContratLocation {
+public class Contrat {
 	@GeneratedValue
 	@Id	
 	int id;
@@ -26,18 +26,94 @@ public class ContratLocation {
 
 	String description;
 	Date dateSignature;
-	String prix;
+	
 	Date dateDeb;
-	public ContratLocation(String description, Date dateSignature, String prix,
+	String nomc;
+	String mailc ;
+	String telc;
+	String cinc;
+	
+	String nomp;
+	String mailp ;
+	String telp;
+	String cinp;
+	
+	
+	public String getNomc() {
+		return nomc;
+	}
+
+	public void setNomc(String nomc) {
+		this.nomc = nomc;
+	}
+
+	public String getMailc() {
+		return mailc;
+	}
+
+	public void setMailc(String mailc) {
+		this.mailc = mailc;
+	}
+
+	public String getTelc() {
+		return telc;
+	}
+
+	public void setTelc(String telc) {
+		this.telc = telc;
+	}
+
+	public String getCinc() {
+		return cinc;
+	}
+
+	public void setCinc(String cinc) {
+		this.cinc = cinc;
+	}
+
+	public String getNomp() {
+		return nomp;
+	}
+
+	public void setNomp(String nomp) {
+		this.nomp = nomp;
+	}
+
+	public String getMailp() {
+		return mailp;
+	}
+
+	public void setMailp(String mailp) {
+		this.mailp = mailp;
+	}
+
+	public String getTelp() {
+		return telp;
+	}
+
+	public void setTelp(String telp) {
+		this.telp = telp;
+	}
+
+	public String getCinp() {
+		return cinp;
+	}
+
+	public void setCinp(String cinp) {
+		this.cinp = cinp;
+	}
+
+	public Contrat(String description, Date dateSignature, 
 			Date dateDeb, Date dateFin) {
 		super();
 		this.description = description;
 		this.dateSignature = dateSignature;
-		this.prix = prix;
+	
 		this.dateDeb = dateDeb;
 		this.dateFin = dateFin;
 	}
 
+	
 	public String getDescription() {
 		return description;
 	}
@@ -54,13 +130,7 @@ public class ContratLocation {
 		this.dateSignature = dateSignature;
 	}
 
-	public String getPrix() {
-		return prix;
-	}
-
-	public void setPrix(String prix) {
-		this.prix = prix;
-	}
+	
 
 	public Date getDateDeb() {
 		return dateDeb;
@@ -80,7 +150,7 @@ public class ContratLocation {
 
 	Date dateFin;
 
-	public ContratLocation() 
+	public Contrat() 
 	{
 		super();
 

@@ -55,4 +55,10 @@ public class TableModelAppartement extends AbstractTableModel
     	appartemmentList = cd.getAllAppartemmentRecherche(condition);
     	fireTableDataChanged();
     }
+    
+    public void refreshTable() {
+    	AppartemmentDAO cd = new AppartemmentDAO();
+   	 appartemmentList = cd.getAllAppartement();
+    	fireTableDataChanged();
+    }
 }

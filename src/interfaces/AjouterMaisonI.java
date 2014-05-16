@@ -62,6 +62,7 @@ String ss="",ff="";
 JCheckBox checkBoxJardin;	
 JCheckBox checkBoxGarage ;
 JComboBox statut;
+String msg="";
 /**
 	 * Launch the application.
 	 */
@@ -119,6 +120,14 @@ JComboBox statut;
   }
    
  });
+		if(cin.getText().length()!=8)
+	      {
+			  msg = "CIN Non Valide  \n"; 
+	      }
+		else
+	      {
+			JOptionPane.showMessageDialog(null,msg,"Erreur",JOptionPane.WARNING_MESSAGE);
+	      }
 		JLabel label_1 = new JLabel("E-Mail :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

@@ -74,6 +74,7 @@ public class ModifierClient extends JDialog {
 	 * Create the frame.
 	 */
 	public ModifierClient(String id,String typeClient,String nom,String prenom,String cin,String mail,String tel,String Description) {
+		setResizable(false);
 		setTitle("Modifier Client");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 651, 673);
@@ -141,7 +142,7 @@ public class ModifierClient extends JDialog {
 		txtdescription.setText(Description);
 		txtmail.setText(mail);
 		
-		JButton btnModifier = new JButton("Modifier");
+		JButton btnModifier = new JButton("Valider");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ClientDAO cd = new ClientDAO();
@@ -181,9 +182,6 @@ public class ModifierClient extends JDialog {
 		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAnnuler.setIcon(new ImageIcon(ModifierClient.class.getResource("/Images/supprimer-icone-9337-48.png")));
 		
-		JLabel lblIdClient = new JLabel("Id Client :");
-		lblIdClient.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
 		txtid = new JTextField();
 		txtid.setBackground(SystemColor.inactiveCaptionBorder);
 		txtid.setColumns(10);
@@ -191,18 +189,18 @@ public class ModifierClient extends JDialog {
 		txtid.setEditable(false);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(274, Short.MAX_VALUE)
 					.addComponent(lblModifierClient)
 					.addGap(165))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(244, Short.MAX_VALUE)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
 					.addGap(32)
 					.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addGap(155))
-				.addGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(31)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
@@ -210,8 +208,7 @@ public class ModifierClient extends JDialog {
 						.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblIdClient))
+						.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
 					.addGap(55)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -223,10 +220,12 @@ public class ModifierClient extends JDialog {
 						.addComponent(txtcin, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtprenom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txttel, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(txtid, Alignment.LEADING)
-							.addComponent(txtnom, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
-					.addContainerGap(63, Short.MAX_VALUE))
+						.addComponent(txtnom, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(73, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(txtid, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(634, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -236,11 +235,7 @@ public class ModifierClient extends JDialog {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(comboBoxClient, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblIdClient)
-						.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(31)
+					.addGap(69)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtnom, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
@@ -270,11 +265,13 @@ public class ModifierClient extends JDialog {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
 							.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnModifier)
 						.addComponent(btnAnnuler))
-					.addGap(23))
+					.addGap(13)
+					.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		contentPane.setLayout(gl_contentPane);
 		setVisible(true);

@@ -59,4 +59,9 @@ public class TableModelCentre extends AbstractTableModel
     	centreList = cd.getAllCentreRecherche(condition);
     	fireTableDataChanged();
     }
+    public void refreshTable() {
+ 	   CentreDAO centreDAO = new CentreDAO();
+        centreList = centreDAO.getAllCentre();
+ 	fireTableDataChanged();
+ }
 }

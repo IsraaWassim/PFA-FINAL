@@ -16,6 +16,7 @@
 <mapping class="objet.Appartemment"/>
 <mapping class="objet.Proprietaire"/>
   <mapping class="objet.Maison"/>
+
   <mapping class="objet.Centre"/>
   <mapping class="objet.Terrain"/>
  </session-factory>

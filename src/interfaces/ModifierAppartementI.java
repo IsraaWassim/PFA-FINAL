@@ -189,7 +189,8 @@ public class ModifierAppartementI extends JFrame {
 		
 		 checkBoxAsc = new JCheckBox();
 		checkBoxAsc.setBackground(Color.WHITE);
-		
+		if(ascenseur.equals("Oui"))
+			 checkBoxAsc.setSelected(true);
 		JLabel lblEtage = new JLabel("Etage :");
 		lblEtage.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

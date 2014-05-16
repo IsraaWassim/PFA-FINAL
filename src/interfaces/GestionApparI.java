@@ -123,14 +123,14 @@ public class GestionApparI extends JFrame {
 				modifierAppartementI.setTxtsurface(surface);
 				modifierAppartementI.setComboBoxVille(ville);
 				modifierAppartementI.setComboBoxStatut(statut);
-				modifierAppartementI.setComboBoxStatut(etage);
+				modifierAppartementI.setboxEtage(etage);
 				GestionApparI.this.hide();
 				modifierAppartementI.setVisible(true);
 				
 		
 			}
 		});
-		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
+		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier-icone-7876-128.png")));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -217,18 +217,32 @@ public class GestionApparI extends JFrame {
 		);
 		panel.setLayout(gl_panel);
 		
+		JButton Rafraîchir = new JButton("Rafra\u00EEchir");
+		Rafraîchir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				((TableModelAppartement)table.getModel()).refreshTable();
+				prix.setText(null);
+				
+			}
+		});
+		Rafraîchir.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
+		Rafraîchir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(167)
+					.addGap(32)
 					.addComponent(btnAjouter, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-					.addGap(197)
+					.addGap(158)
 					.addComponent(btnModifier, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
 					.addGap(142)
+					.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+					.addGap(130)
 					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-					.addGap(182))
+					.addGap(76))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(110)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 878, GroupLayout.PREFERRED_SIZE)
@@ -237,7 +251,7 @@ public class GestionApparI extends JFrame {
 					.addGap(406)
 					.addComponent(lblGestionDesAppartements)
 					.addContainerGap(430, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
 					.addContainerGap())
@@ -251,12 +265,18 @@ public class GestionApparI extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(38)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-					.addGap(123)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnAjouter)
-						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addGap(103))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(123)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnAjouter)
+								.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+							.addGap(103))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(Rafraîchir, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+							.addGap(103))))
 		);
 		table = new JTable();
 		table.setBackground(SystemColor.text);

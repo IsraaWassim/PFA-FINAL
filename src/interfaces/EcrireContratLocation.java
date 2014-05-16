@@ -1,3 +1,4 @@
+
 package interfaces;
 
 import java.awt.BorderLayout;
@@ -39,11 +40,14 @@ import java.awt.event.KeyEvent;
 
 import com.toedter.calendar.JDateChooser;
 
+import dao.AppartemmentDAO;
 import dao.ClientDAO;
+import dao.ContratDAO;
 import dao.ProprietaireDAO;
 
 import javax.swing.SwingConstants;
 
+import objet.Appartemment;
 import objet.Client;
 import objet.Maison;
 import objet.Proprietaire;
@@ -374,7 +378,19 @@ public class EcrireContratLocation extends JFrame {
 		dateChooser.setBounds(20, 20, 100, 20);
 		this.getContentPane().add(dateChooser);
 		JButton btnImprimer = new JButton("Imprimer");
-
+		btnImprimer.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent arg0) {
+		//il faut supprimer ele contenu de la table contrat
+		//insertion des nouveaus=x données du foormulaire dans la table
+		
+		 String y=boxNomL.getSelectedItem().toString();
+		 String z=boxnomP.getSelectedItem().toString();
+	
+    
+		ImprimerContrat.imprimer(false);
+		
+	}});
+				
 		btnImprimer.setIcon(new ImageIcon(EcrireContratLocation.class
 				.getResource("/Images/logo-imprimante.jpg")));
 		btnImprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
