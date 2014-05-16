@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="contratLocation")
+@Table(name="contrat")
 public class Contrat {
 	@GeneratedValue
 	@Id	
@@ -103,17 +103,27 @@ public class Contrat {
 		this.cinp = cinp;
 	}
 
-	public Contrat(String description, Date dateSignature, 
-			Date dateDeb, Date dateFin) {
+
+
+	
+	public Contrat(String description, Date dateSignature, Date dateDeb,
+			String nomc, String mailc, String telc, String cinc, String nomp,
+			String mailp, String telp, String cinp, Date dateFin) {
 		super();
 		this.description = description;
 		this.dateSignature = dateSignature;
-	
 		this.dateDeb = dateDeb;
+		this.nomc = nomc;
+		this.mailc = mailc;
+		this.telc = telc;
+		this.cinc = cinc;
+		this.nomp = nomp;
+		this.mailp = mailp;
+		this.telp = telp;
+		this.cinp = cinp;
 		this.dateFin = dateFin;
 	}
 
-	
 	public String getDescription() {
 		return description;
 	}

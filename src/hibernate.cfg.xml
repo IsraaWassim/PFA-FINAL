@@ -19,5 +19,7 @@
 
   <mapping class="objet.Centre"/>
   <mapping class="objet.Terrain"/>
+  
+   <mapping class="objet.Contrat"/>
  </session-factory>
 </hibernate-configuration>

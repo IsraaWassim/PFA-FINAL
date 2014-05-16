@@ -63,6 +63,7 @@ JCheckBox checkBoxJardin;
 JCheckBox checkBoxGarage ;
 JComboBox statut;
 String msg="";
+int i =0;
 /**
 	 * Launch the application.
 	 */
@@ -108,6 +109,7 @@ String msg="";
 		cin = new JTextField();
 		cin.setColumns(10);
 		cin.setBackground(SystemColor.inactiveCaptionBorder);
+		
 		cin.addKeyListener(new KeyAdapter() {
 			@Override
 		public void keyTyped(KeyEvent evt) {
@@ -120,14 +122,23 @@ String msg="";
   }
    
  });
-		if(cin.getText().length()!=8)
-	      {
-			  msg = "CIN Non Valide  \n"; 
-	      }
-		else
-	      {
-			JOptionPane.showMessageDialog(null,msg,"Erreur",JOptionPane.WARNING_MESSAGE);
-	      }
+		
+		
+		cin.addKeyListener(new KeyAdapter() {
+					@Override
+				public void keyTyped(KeyEvent evt) {
+		i=i+1;
+		if(i<=8){
+		            char car = evt.getKeyChar(); 
+		            
+		            if((car<'0' || car>'9')) 
+		             evt.consume(); 
+		           
+		  }
+		}
+		   
+		 });
+	
 		JLabel label_1 = new JLabel("E-Mail :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		

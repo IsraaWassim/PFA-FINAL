@@ -49,10 +49,12 @@ import javax.swing.SwingConstants;
 
 import objet.Appartemment;
 import objet.Client;
+import objet.Contrat;
 import objet.Maison;
 import objet.Proprietaire;
 
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +79,8 @@ public class EcrireContratLocation extends JFrame {
 	private JTextField cinp;
 	private JTextField mailp;
 	private JTextField telp;
+	JTextPane textPane;
+	JDateChooser dateChooser2,dateChooser,dateChooser3;
 
 	/**
 	 * Launch the application.
@@ -254,7 +258,7 @@ public class EcrireContratLocation extends JFrame {
 		}
 
 		boxNomL_1 = new JComboBox();
-		boxNomL_1.setModel(aModel2);
+	/*	boxNomL_1.setModel(aModel2);
 		boxNomL_1.addItemListener(new ItemListener() {
 
 			@Override
@@ -277,7 +281,7 @@ public class EcrireContratLocation extends JFrame {
 					}
 				}
 			}
-		});
+		});*/
 
 		JLabel label_1 = new JLabel("CIN :");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -354,7 +358,7 @@ public class EcrireContratLocation extends JFrame {
 		JLabel lblDescription = new JLabel("Description de Bien:");
 		lblDescription.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JTextPane textPane = new JTextPane();
+		 textPane = new JTextPane();
 		textPane.setBackground(SystemColor.inactiveCaptionBorder);
 
 		JLabel lblDateDebut = new JLabel("Date Debut :");
@@ -363,7 +367,7 @@ public class EcrireContratLocation extends JFrame {
 		JLabel lblDateFin = new JLabel("Date Fin:");
 		lblDateFin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JDateChooser dateChooser2 = new JDateChooser();
+		final JDateChooser dateChooser2 = new JDateChooser();
 		dateChooser2.setBounds(20, 20, 100, 20);
 		this.getContentPane().add(dateChooser2);
 
@@ -371,21 +375,32 @@ public class EcrireContratLocation extends JFrame {
 		datesig.setHorizontalAlignment(SwingConstants.TRAILING);
 		datesig.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JDateChooser dateChooser3 = new JDateChooser();
+		final JDateChooser dateChooser3 = new JDateChooser();
 		dateChooser3.setBounds(20, 20, 100, 20);
 		this.getContentPane().add(dateChooser3);
-		JDateChooser dateChooser = new JDateChooser();
+		final JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(20, 20, 100, 20);
 		this.getContentPane().add(dateChooser);
 		JButton btnImprimer = new JButton("Imprimer");
 		btnImprimer.addActionListener(new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
+		
 		//il faut supprimer ele contenu de la table contrat
 		//insertion des nouveaus=x données du foormulaire dans la table
-		
-		 String y=boxNomL.getSelectedItem().toString();
+		ContratDAO adao = new ContratDAO();
+		 String y="simple test";//boxNomL.getSelectedItem().toString();
 		 String z=boxnomP.getSelectedItem().toString();
-	
+		 
+		 
+		 Contrat ap=new Contrat(textPane.getText(),dateChooser2.getDate(),dateChooser.getDate(),y,
+				 
+				 mail.getText(),tel.getText(),cin.getText(),z,mailp.getText(),telp.getText(),cinp.getText(),
+				 dateChooser3.getDate());
+		 adao.delete(ap);
+		 adao.save(ap);
+		
+		
+			
     
 		ImprimerContrat.imprimer(false);
 		
@@ -413,7 +428,10 @@ public class EcrireContratLocation extends JFrame {
 										.addGap(87)
 										.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)))
 								.addGap(57))
-							.addGroup(gl_contentPane.createSequentialGroup()
+					
+								
+								
+								.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(lblContratDeLocation, GroupLayout.PREFERRED_SIZE, 485, GroupLayout.PREFERRED_SIZE)
 								.addGap(289))
 							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()

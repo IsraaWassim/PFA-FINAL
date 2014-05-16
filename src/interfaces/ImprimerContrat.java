@@ -21,7 +21,7 @@ public static void imprimer( boolean onlyExport) {
 		ReportClientDocument reportClientDocument = new ReportClientDocument();
 		reportClientDocument.setReportAppServer(ReportClientDocument.inprocConnectionString);
 		reportClientDocument.open("doc\\Contrat.rpt", OpenReportOptions._openAsReadOnly);
-		reportClientDocument.getDatabaseController().logon("postegres", "0000");
+		reportClientDocument.getDatabaseController().logon("postgres", "0000");
 		
 		ReportViewerBean reportViewerBean = new ReportViewerBean();
 		reportViewerBean.init();

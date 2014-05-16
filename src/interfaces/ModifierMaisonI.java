@@ -339,49 +339,57 @@ public class ModifierMaisonI extends JFrame {
 	}
 
 
-	public void setTxtsurface(JTextField txtsurface) {
-		this.txtsurface = txtsurface;
+	public void setTxtsurface(String txt) {
+		
+		this.txtsurface .setText(txt);
 	}
 
-	public void setTxtcodepostal(JTextField txtcodepostal) {
-		this.txtcodepostal = txtcodepostal;
+	public void setTxtcodepostal(String txt ) {
+		
+		this.txtcodepostal .setText(txt);
 	}
 
-	public void setTxtprix(JTextField txtprix) {
-		this.txtprix = txtprix;
+	public void setTxtprix(String txt) {
+		
+		this.txtprix .setText(txt);
 	}
 
-	public void setTxtrue(JTextField txtrue) {
-		this.txtrue = txtrue;
+	public void setTxtrue(String txt) {
+		
+		this.txtrue .setText(txt);
+		
 	}
 
-	public void setTxtchambre(JTextField txtchambre) {
-		this.txtchambre = txtchambre;
+	public void setTxtchambre(String txt) {
+		
+		this.txtchambre .setText(txt);
 	}
 
-	public void setTxtid(JTextField txtid) {
-		this.txtid = txtid;
+	public void setTxtid(String txt) {
+		
+		this.txtid .setText(txt);
 	}
 
-	public void setBoxstatut(JComboBox boxstatut) {
-		this.boxstatut = boxstatut;
+	public void setBoxstatut(Object statut ) {
+		
+		this.boxville.setSelectedItem(statut);
 	}
 
-	public void setBoxville(JComboBox boxville) {
-		this.boxville = boxville;
+	public void setBoxville(Object ville) {
+	
+		this.boxville.setSelectedItem(ville);
 	}
 
 	public void setSs(String ss) {
 		this.ss = ss;
 	}
 
-	public void setTxtdescription(JTextArea txtdescription) {
-		this.txtdescription = txtdescription;
+	public void setTxtdescription(String txt) {
+		
+		this.txtdescription .setText(txt);
 	}
 
-	public void setJj(String jj) {
-		this.jj = jj;
-	}
+
 
 	public void setCheckBoxjardin(JCheckBox checkBoxjardin) {
 		this.checkBoxjardin = checkBoxjardin;

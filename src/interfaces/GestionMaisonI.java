@@ -181,15 +181,15 @@ public class GestionMaisonI extends JFrame {
 				//JOptionPane.showMessageDialog(null, idAppartement+" "+description+" "+prix+" "+ville+" "+rue+" "+code+" "+ascenseur+" "+surface+" "+statut+" "+etage);
 				//new ModifierAppartementI(idAppartement,description,prix,ville,rue,code,ascenseur,surface,statut,etage);
 				ModifierMaisonI modifierMaisonI = new ModifierMaisonI(id,description,surface,prix,ville,rue,code,nbrChambre,garage,jardin,statut);
-				modifierMaisonI.setTxtcode(code);
+				modifierMaisonI.setTxtcodepostal(code);
 				modifierMaisonI.setTxtdescription(description);
-				modifierMaisonI.setTxtid(idAppartement);
+				modifierMaisonI.setTxtid(id);
 				modifierMaisonI.setTxtprix(prix);
 				modifierMaisonI.setTxtrue(rue);
 				modifierMaisonI.setTxtsurface(surface);
-				modifierMaisonI.setComboBoxVille(ville);
-				modifierMaisonI.setComboBoxStatut(statut);
-				modifierMaisonI.setboxEtage(etage);
+				modifierMaisonI.setBoxville(ville);
+				modifierMaisonI.setBoxstatut(statut);
+				modifierMaisonI.setTxtchambre(nbrChambre);
 				GestionMaisonI.this.hide();
 				modifierMaisonI.setVisible(true);
 				
