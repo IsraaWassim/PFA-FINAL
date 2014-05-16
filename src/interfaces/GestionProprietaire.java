@@ -74,7 +74,8 @@ public class GestionProprietaire extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		 this.setLocationRelativeTo(null);
 		JLabel lblGestionPropritaires = new JLabel("Gestion Propri\u00E9taires ");
 		lblGestionPropritaires.setIcon(new ImageIcon(GestionProprietaire.class.getResource("/Images/3-client-icone-6526-96 (2).png")));
 		lblGestionPropritaires.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -149,7 +150,16 @@ public class GestionProprietaire extends JFrame {
 				String tel=(String)model.getValueAt(table.getSelectedRow(),5);
 		
 				
+				ModifierProprietaire modifierClient = new ModifierProprietaire(idProprietaire,nom,prenom,cin,mail,tel);
+				modifierClient.setTxtcin(nom);
+				modifierClient.setTxtdescription(Description);
+				modifierClient.setTxtprenom(prenom);
+				modifierClient.setTxtcin(cin);
+				modifierClient.setTxtmail(mail);
+				modifierClient.setTxttel(tel);
 				
+				GestionProprietaire.this.hide();
+				modifierClient.setVisible(true);
 				
 		
 			}
@@ -157,19 +167,7 @@ public class GestionProprietaire extends JFrame {
 		modifier.setIcon(new ImageIcon(GestionProprietaire.class.getResource("/Images/modifier.png")));
 		modifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		model = new TableModelProp();
-		/*table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column"
-			}
-		));*/
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

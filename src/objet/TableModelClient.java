@@ -4,6 +4,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel; 
 
+import dao.AppartemmentDAO;
 import dao.ClientDAO;
 
 public class TableModelClient extends AbstractTableModel
@@ -42,5 +43,10 @@ public class TableModelClient extends AbstractTableModel
     {
         String[] columnNames=new String[]{"Id Client","Type Client","Nom","Prenom","CIN","Email","Téléphone","Description"};
         return columnNames[column];
+    }
+    public void refreshSupp() {
+    	ClientDAO clientDAO = new ClientDAO();
+        clientList = clientDAO.getAllClient();
+    	fireTableDataChanged();
     }
 }

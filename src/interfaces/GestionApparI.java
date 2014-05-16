@@ -85,6 +85,7 @@ public class GestionApparI extends JFrame {
 
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GestionApparI.this.hide();
@@ -95,6 +96,7 @@ public class GestionApparI extends JFrame {
 		btnAjouter.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/edit_add.png")));
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -131,6 +133,7 @@ public class GestionApparI extends JFrame {
 		btnModifier.setIcon(new ImageIcon(GestionApparI.class.getResource("/Images/modifier.png")));
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnSupprimer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Appartemment c = new Appartemment();
@@ -165,11 +168,11 @@ public class GestionApparI extends JFrame {
 		
 		 boxville = new JComboBox();
 		boxville.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		boxville.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
 		
-		JLabel label_2 = new JLabel("Filtrer");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblRechercher = new JLabel("Rechercher");
+		lblRechercher.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton button = new JButton("");
 		button.addActionListener(new ActionListener() {
@@ -192,9 +195,9 @@ public class GestionApparI extends JFrame {
 					.addComponent(label_1)
 					.addGap(61)
 					.addComponent(boxville, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-					.addComponent(label_2)
-					.addGap(30)
+					.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+					.addComponent(lblRechercher)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addGap(40))
 		);
@@ -207,9 +210,9 @@ public class GestionApparI extends JFrame {
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 							.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 							.addComponent(label)
-							.addComponent(label_2)
 							.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-							.addComponent(label_1)))
+							.addComponent(label_1)
+							.addComponent(lblRechercher)))
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -227,14 +230,14 @@ public class GestionApparI extends JFrame {
 					.addComponent(btnSupprimer, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
 					.addGap(182))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(378)
-					.addComponent(lblGestionDesAppartements)
-					.addContainerGap(458, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(110)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 878, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(132, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(406)
+					.addComponent(lblGestionDesAppartements)
+					.addContainerGap(430, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1100, Short.MAX_VALUE)
 					.addContainerGap())
@@ -246,8 +249,8 @@ public class GestionApparI extends JFrame {
 					.addComponent(lblGestionDesAppartements)
 					.addGap(44)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(80)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+					.addGap(38)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
 					.addGap(123)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAjouter)
@@ -256,7 +259,7 @@ public class GestionApparI extends JFrame {
 					.addGap(103))
 		);
 		table = new JTable();
-		table.setBackground(SystemColor.inactiveCaption);
+		table.setBackground(SystemColor.text);
 		scrollPane.setViewportView(table);
 		table.setModel(model);
 		

@@ -77,7 +77,7 @@ public class GestionCentreCommercialI extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		this.setLocationRelativeTo(null);
 		JLabel lblGestionDesCentres = new JLabel("Gestion des Centres Commerciaux");
 		lblGestionDesCentres.setIcon(new ImageIcon(GestionCentreCommercialI.class.getResource("/Images/logo-locauxcommerciaux.jpg")));
 		lblGestionDesCentres.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -97,10 +97,11 @@ public class GestionCentreCommercialI extends JFrame {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		final JComboBox boxville = new JComboBox();
-		boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		boxville.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		boxville.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		
-		JLabel label_2 = new JLabel("Filtrer");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblRecherhcer = new JLabel("Rechercher");
+		lblRecherhcer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton filtrer = new JButton("");
 		filtrer.addActionListener(new ActionListener() {
@@ -114,7 +115,6 @@ public class GestionCentreCommercialI extends JFrame {
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 760, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(59)
 					.addComponent(label)
@@ -125,24 +125,24 @@ public class GestionCentreCommercialI extends JFrame {
 					.addGap(30)
 					.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(67)
-					.addComponent(label_2)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblRecherhcer)
+					.addGap(43)
 					.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(32, Short.MAX_VALUE))
+					.addContainerGap(83, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 127, Short.MAX_VALUE)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(42)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-						.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
-						.addComponent(label)
-						.addComponent(label_2))
-					.addContainerGap(19, Short.MAX_VALUE))
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+							.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+							.addComponent(label_1)
+							.addComponent(label)
+							.addComponent(lblRecherhcer)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		
@@ -213,16 +213,8 @@ public class GestionCentreCommercialI extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(438, Short.MAX_VALUE)
-					.addComponent(lblGestionDesCentres, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
-					.addGap(248))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(162)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(198, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap(189, Short.MAX_VALUE)
 					.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
 					.addGap(166)
@@ -230,21 +222,29 @@ public class GestionCentreCommercialI extends JFrame {
 					.addGap(141)
 					.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
 					.addGap(198))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(83)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 929, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(108, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(101)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(131))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(26)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1076, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(18, Short.MAX_VALUE))
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addGap(331)
+					.addComponent(lblGestionDesCentres, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(355, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
+					.addGap(19)
 					.addComponent(lblGestionDesCentres, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-					.addGap(64)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-					.addGap(69)
+					.addGap(67)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+					.addGap(70)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
@@ -257,7 +257,7 @@ public class GestionCentreCommercialI extends JFrame {
 				scrollPane.setViewportView(table);
 				
 				table.setModel(model);
-				table.setBackground(SystemColor.inactiveCaption);
+				table.setBackground(SystemColor.text);
 		contentPane.setLayout(gl_contentPane);
 		 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		 this.setLocationRelativeTo(null);

@@ -246,7 +246,8 @@ public class AjouterTerrainI extends JFrame {
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 villebox = new JComboBox(new Object[]{});
-			villebox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		 villebox.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			villebox.setModel(new DefaultComboBoxModel(new String[] {"Sélectionnez une ville","Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
 		JLabel label_9 = new JLabel("Code Postal :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -322,7 +323,7 @@ public class AjouterTerrainI extends JFrame {
 		
 		 statutbox = new JComboBox();
 		statutbox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		statutbox.setModel(new DefaultComboBoxModel(new String[] {"Location", "Achat"}));
+		statutbox.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une Statut", "Location", "Achat"}));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -347,15 +348,13 @@ public class AjouterTerrainI extends JFrame {
 								.addComponent(lblStatut)
 								.addComponent(label_9))
 							.addGap(49)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(codepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-									.addGap(41)
-									.addComponent(label_12))
-								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(statutbox, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(label_11)))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+								.addComponent(statutbox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(codepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE))
+							.addGap(41)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_12, Alignment.TRAILING)
+								.addComponent(label_11, Alignment.TRAILING))
 							.addGap(26)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
 								.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
@@ -381,7 +380,7 @@ public class AjouterTerrainI extends JFrame {
 						.addComponent(lblStatut)
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_11)
-						.addComponent(statutbox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(statutbox, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_panel_1.createSequentialGroup()
@@ -427,6 +426,10 @@ adao.save(ap);
 				cin.setText(null);
 				prenom.setText(null);
 				nom.setText(null);
+				
+				AjouterTerrainI.this.hide();
+				GestionTerrainI ap8 =new GestionTerrainI();
+				ap8.setVisible(true);
 				    }
 			}
 	

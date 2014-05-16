@@ -105,6 +105,7 @@ public class ModifierTerrainI extends JFrame {
 		label_8.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 villebox = new JComboBox(new Object[]{});
+		 villebox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		 villebox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		
 		JLabel label_9 = new JLabel("Code Postal :");
@@ -162,84 +163,113 @@ public class ModifierTerrainI extends JFrame {
 					cd.update(a);
 					
 					  JOptionPane.showMessageDialog(null, "Terrain Modifier ", "OK", JOptionPane.INFORMATION_MESSAGE);
+					  
+					// Pour vider les champs
+						
+					  txtcodepostal.setText("");
+						txtrue.setText("");
+						txtprix.setText("");
+						txtsurface.setText("");
+						txtdescription.setText("");
+		
+						ModifierTerrainI.this.hide();
+						GestionTerrainI ap8 =new GestionTerrainI();
+						ap8.setVisible(true);
+					  
+					  
+					  
+					  
+					  
+					  
+					  
 				}
 			});
 			Valider.setIcon(new ImageIcon(ModifierTerrainI.class.getResource("/Images/modifier.png")));
 			Valider.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		txtid = new JTextField();
+		txtid.setColumns(10);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(142)
+					.addComponent(Valider, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addGap(113)
+					.addComponent(btnAnnuler, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+					.addComponent(txtid, GroupLayout.PREFERRED_SIZE, 9, GroupLayout.PREFERRED_SIZE)
+					.addGap(64))
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(32)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(32)
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
-									.addComponent(label_6)
-									.addGap(75)
-									.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
-									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(label_10)
-										.addComponent(label_8)
-										.addComponent(label_9)
-										.addComponent(label_11)
-										.addComponent(label_7)
-										.addComponent(lblStatut))
-									.addGap(112)
-									.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-										.addComponent(boxstatut, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtrue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtcodepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
-										.addComponent(villebox, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))))
+							.addComponent(label_6)
+							.addGap(75)
+							.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 467, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(142)
-							.addComponent(Valider, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-							.addGap(113)
-							.addComponent(btnAnnuler, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(83, Short.MAX_VALUE))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_10)
+								.addComponent(label_8)
+								.addComponent(label_9)
+								.addComponent(label_11)
+								.addComponent(label_7)
+								.addComponent(lblStatut))
+							.addGap(112)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(txtrue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtcodepostal, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(boxstatut, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(villebox, Alignment.LEADING, 0, 178, Short.MAX_VALUE)))))
+					.addContainerGap(102, Short.MAX_VALUE))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(boxstatut, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblStatut))
-					.addGap(38)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(label_7)
-						.addComponent(villebox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_11)
-						.addComponent(txtrue, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
-					.addGap(38)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtcodepostal, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-						.addComponent(label_9))
-					.addGap(48)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_8))
-					.addGap(41)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label_10)
-						.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(77)
-							.addComponent(label_6))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGap(54)
-							.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnAnnuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(Valider, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addGap(99))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(boxstatut, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblStatut))
+							.addGap(38)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_7)
+								.addComponent(villebox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label_11)
+								.addComponent(txtrue, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+							.addGap(38)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtcodepostal, GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+								.addComponent(label_9))
+							.addGap(48)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtsurface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_8))
+							.addGap(41)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label_10)
+								.addComponent(txtprix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGap(77)
+									.addComponent(label_6))
+								.addGroup(gl_panel_1.createSequentialGroup()
+									.addGap(54)
+									.addComponent(txtdescription, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
+							.addGap(18)
+							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnAnnuler, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+								.addComponent(Valider, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+							.addGap(99))
+						.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+							.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(80))))
 		);
 		panel_1.setLayout(gl_panel_1);
 		
@@ -248,30 +278,23 @@ public class ModifierTerrainI extends JFrame {
 		txtprix.setText(prix);
 		txtrue.setText(rue);
 		txtsurface.setText(surface);
-		
-		txtid = new JTextField();
-		txtid.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(txtid, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
-					.addGap(280)
-					.addComponent(lblModifierterrain, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(10)
-					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE))
+					.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(259, Short.MAX_VALUE)
+					.addComponent(lblModifierterrain, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addGap(243))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblModifierterrain, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
-						.addComponent(txtid, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(4)
+					.addComponent(lblModifierterrain, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);

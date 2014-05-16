@@ -80,6 +80,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         JLabel label = new JLabel("");
         label.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/Images/logo_sotrim.jpg")));
+        
+        JLabel lblNewLabel = new JLabel("Vous pouvez par la suite ajouter des immeubles , des locataires , des propri\u00E9taires , des contrats ... ");
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1Layout.setHorizontalGroup(
@@ -90,18 +93,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         					.addGap(232)
         					.addComponent(table, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         				.addGroup(jPanel1Layout.createSequentialGroup()
-        					.addGap(45)
-        					.addComponent(label, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)))
-        			.addContainerGap(143, Short.MAX_VALUE))
+        					.addGap(89)
+        					.addComponent(label)))
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        		.addGroup(jPanel1Layout.createSequentialGroup()
+        			.addContainerGap(133, Short.MAX_VALUE)
+        			.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 856, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
         	jPanel1Layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(jPanel1Layout.createSequentialGroup()
-        			.addGap(132)
-        			.addComponent(label, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-        			.addGap(114)
+        			.addGap(92)
+        			.addComponent(label, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+        			.addGap(43)
+        			.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+        			.addGap(30)
         			.addComponent(table, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(161, Short.MAX_VALUE))
+        			.addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1.setLayout(jPanel1Layout);
 
@@ -176,8 +185,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
   		{
   			public void actionPerformed(java.awt.event.ActionEvent e )
   			{
-  				//GestionContratLocationI l= new GestionContratLocationI();
-				//l.setVisible(true);
+  				GestionContratLocationI l= new GestionContratLocationI();
+				l.setVisible(true);
   			}
   			 
   		});
@@ -196,28 +205,70 @@ public class MenuPrincipal extends javax.swing.JFrame {
   			 
   		});
         
-        mnAide = new JMenu("Statistique");
-        mnAide.setFont(new Font("Dialog", Font.PLAIN, 16));
-        mnAide.setBackground(Color.BLACK);
-        jMenuBar1.add(mnAide);        
+        client = new JMenu("Gestion des Clients");
+        client.setFont(new Font("Dialog", Font.PLAIN, 16));
+        client.setBackground(Color.BLACK);
+        jMenuBar1.add(client);        
         
-        mnStatiqtique = new JMenu("Aide");
-        mnStatiqtique.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        jMenuBar1.add(mnStatiqtique);
-
+        mntmClients = new JMenuItem("Clients");
+        mntmClients.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        mntmClients.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/Images/locataires.png")));
+        client.add(mntmClients);
+        mntmClients.addActionListener(new java.awt.event.ActionListener ()
+  		{
+  			public void actionPerformed(java.awt.event.ActionEvent e )
+  			{
+  			GestionClient c = new GestionClient();
+  			c.setVisible(true);
+  			}
+  			 
+  		});
+        
+        
+        
+        mntmProprietaires = new JMenuItem("Proprietaires");
+        mntmProprietaires.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        mntmProprietaires.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/Images/proprietaire.png")));
+        client.add(mntmProprietaires);
+        mntmProprietaires.addActionListener(new java.awt.event.ActionListener ()
+  		{
+  			public void actionPerformed(java.awt.event.ActionEvent e )
+  			{
+  			GestionProprietaire c = new GestionProprietaire();
+  			c.setVisible(true);
+  			}
+  			 
+  		});
+        
+        
+        
+        
+        aide = new JMenu("Aide");
+        aide.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        jMenuBar1.add(aide);
+        aide.addActionListener(new java.awt.event.ActionListener ()
+  		{
+  			public void actionPerformed(java.awt.event.ActionEvent e )
+  			{
+  				aide c = new aide();
+  			c.setVisible(true);
+  			}
+  			 
+  		});
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
+        			.addGap(22)
         			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 890, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap(81, Short.MAX_VALUE))
+        			.addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap(81, Short.MAX_VALUE)
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addGap(30)
         			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 567, GroupLayout.PREFERRED_SIZE)
-        			.addContainerGap())
+        			.addContainerGap(62, Short.MAX_VALUE))
         );
         getContentPane().setLayout(layout);
 
@@ -231,9 +282,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private JMenu mnCrationContrat;
-    private JMenu mnAide;
+    private JMenu client;
     private JMenuItem mntmContratDeLocation;
     private JMenuItem mntmConratDachat;
     private JTable table;
-    private JMenu mnStatiqtique;
+    private JMenu aide;
+    private JMenuItem mntmClients;
+    private JMenuItem mntmProprietaires;
 }

@@ -69,6 +69,14 @@ public class Authentification extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		JButton btnConnexion = new JButton("Connexion");
+		btnConnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+			}
+		});
 	
 		btnConnexion.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConnexion.setIcon(new ImageIcon(Authentification.class.getResource("/Images/limportation-kgpg-icone-9298-48.png")));

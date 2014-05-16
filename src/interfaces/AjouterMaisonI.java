@@ -489,6 +489,14 @@ JComboBox statut;
 				cin.setText(null);
 				prenom.setText(null);
 				nom.setText(null);
+				
+				AjouterMaisonI.this.hide();
+				GestionMaisonI ap8 =new GestionMaisonI();
+				ap8.setVisible(true);
+				
+				
+				
+				
 				    }
 			}
 		});

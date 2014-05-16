@@ -365,7 +365,7 @@ nom.setText(null);
 		
 		villeBox = new JComboBox(new Object[]{});
 		villeBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		villeBox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		villeBox.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 		
 		JLabel label_2 = new JLabel("Code Postal :");
 		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -446,7 +446,7 @@ nom.setText(null);
 		lblDescription.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		 description = new JTextArea();
-		description.setBackground(SystemColor.inactiveCaption);
+		description.setBackground(SystemColor.inactiveCaptionBorder);
 		description.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent evt) {
@@ -463,11 +463,11 @@ nom.setText(null);
 		
 	    etageBox = new JComboBox();
 		etageBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		etageBox.setModel(new DefaultComboBoxModel(new String[] {"Etage 1", "Etage 2", "Etage 3", "Etage 4", "Etage 5", "Etage 6", "Etage 7", "Etage 8", "Etage 9"}));
+		etageBox.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez un etage", "Etage 1", "Etage 2", "Etage 3", "Etage 4", "Etage 5", "Etage 6", "Etage 7", "Etage 8", "Etage 9"}));
 		
 		StatutBox = new JComboBox();
 		StatutBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		StatutBox.setModel(new DefaultComboBoxModel(new String[] {"Location", "Achat"}));
+		StatutBox.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectionnez une Statut", "Location", "Achat"}));
 		
 		 checkAsc = new JCheckBox();
 		checkAsc.setBackground(Color.WHITE);
@@ -500,22 +500,27 @@ nom.setText(null);
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblDescription)
 							.addGap(48)
-							.addComponent(description, GroupLayout.PREFERRED_SIZE, 436, GroupLayout.PREFERRED_SIZE)))
-					.addGap(58)
+							.addComponent(description, GroupLayout.PREFERRED_SIZE, 530, GroupLayout.PREFERRED_SIZE)))
+					.addGap(29)
 					.addGroup(gl_panelBien.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panelBien.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panelBien.createSequentialGroup()
+							.addGroup(gl_panelBien.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panelBien.createSequentialGroup()
+									.addComponent(label_1)
+									.addGap(42))
+								.addGroup(gl_panelBien.createParallelGroup(Alignment.LEADING)
+									.addComponent(lblEtages)
+									.addComponent(lblStatut, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addGap(24))
+						.addGroup(gl_panelBien.createSequentialGroup()
 							.addComponent(lblAscenseur)
-							.addComponent(label_1))
-						.addGroup(gl_panelBien.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblEtages)
-							.addComponent(lblStatut, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
-					.addGap(24)
+							.addPreferredGap(ComponentPlacement.UNRELATED)))
 					.addGroup(gl_panelBien.createParallelGroup(Alignment.LEADING)
 						.addComponent(rue, GroupLayout.PREFERRED_SIZE, 187, GroupLayout.PREFERRED_SIZE)
+						.addComponent(checkAsc, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panelBien.createParallelGroup(Alignment.TRAILING, false)
 							.addComponent(etageBox, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(StatutBox, Alignment.LEADING, 0, 119, Short.MAX_VALUE))
-						.addComponent(checkAsc, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE))
+							.addComponent(StatutBox, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
 					.addGap(17))
 		);
 		gl_panelBien.setVerticalGroup(
@@ -543,8 +548,8 @@ nom.setText(null);
 									.addGap(41)
 									.addGroup(gl_panelBien.createParallelGroup(Alignment.BASELINE)
 										.addComponent(prix, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblAscenseur)
-										.addComponent(checkAsc)))))
+										.addComponent(checkAsc)
+										.addComponent(lblAscenseur)))))
 						.addGroup(gl_panelBien.createSequentialGroup()
 							.addGap(58)
 							.addComponent(surface, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)))

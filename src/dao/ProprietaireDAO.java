@@ -18,7 +18,7 @@ public class ProprietaireDAO {
 	
 	Session session;
 	SessionFactory sf;
-	private DefaultComboBoxModel aModel;
+
 	public ProprietaireDAO()
 	
 	{
@@ -53,26 +53,7 @@ public class ProprietaireDAO {
 		return list;
 
 	}
-	public void remplirComboBox()
-	{
-		aModel=new DefaultComboBoxModel();
-		List<Proprietaire> l=session.createQuery("from Proprietaire").list();
-		aModel.addElement("");
-		try {
-	     
-		      for(Object obj : l)
-		      {
-		    	  Proprietaire prop =(Proprietaire)obj ;
-		    	  aModel.addElement(prop.getNom());
-		    	 
-		      }
-		    } 
-		    finally 
-		    {
-		      session.close();
-		    }
-		   
-	}
+	
 	
 	public void closeConnection()
 	{

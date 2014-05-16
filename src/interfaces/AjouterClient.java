@@ -74,7 +74,8 @@ public class AjouterClient extends JFrame {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -248,6 +249,10 @@ prenom.setText(null);
 nom.setText(null);
 textArea.setText(null);
 				JOptionPane.showMessageDialog(null, "Client ajouté avec succés !");
+				AjouterClient.this.hide();
+				GestionClient ap8 =new GestionClient();
+				ap8.setVisible(true);
+				
 				    }
 			}
 	

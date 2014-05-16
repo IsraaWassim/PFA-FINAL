@@ -99,11 +99,11 @@ public class GestionMaisonI extends JFrame {
 		
 		JComboBox boxville = new JComboBox();
 		boxville.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		 boxville.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		 boxville.setModel(new DefaultComboBoxModel(new String[] {"S\u00E9lectonnez une ville", "Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
 		
-		JLabel label_2 = new JLabel("Filtrer");
-		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblRechercher = new JLabel("Rechercher");
+		lblRechercher.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton filtrer = new JButton("");
 		filtrer.setIcon(new ImageIcon(GestionMaisonI.class.getResource("/Images/rechercher.gif")));
@@ -121,7 +121,7 @@ public class GestionMaisonI extends JFrame {
 					.addGap(39)
 					.addComponent(boxville, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(91)
-					.addComponent(label_2)
+					.addComponent(lblRechercher)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(32, Short.MAX_VALUE))
@@ -134,7 +134,7 @@ public class GestionMaisonI extends JFrame {
 						.addComponent(prix, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 						.addComponent(filtrer, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label)
-						.addComponent(label_2)
+						.addComponent(lblRechercher)
 						.addComponent(boxville, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_1))
 					.addContainerGap(19, Short.MAX_VALUE))
@@ -144,6 +144,7 @@ public class GestionMaisonI extends JFrame {
 		JButton ajouter = new JButton("Ajouter ");
 		ajouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GestionMaisonI.this.hide();
 				AjouterMaisonI m = new AjouterMaisonI();
 				m.setVisible(true);
 			}
@@ -190,9 +191,6 @@ public class GestionMaisonI extends JFrame {
 							.addGap(374)
 							.addComponent(lblGestionDesMaisons, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(99)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 760, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(31)
 							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 1079, Short.MAX_VALUE)))
 					.addContainerGap())
@@ -204,6 +202,10 @@ public class GestionMaisonI extends JFrame {
 					.addGap(169)
 					.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
 					.addGap(123))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(99)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 914, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(107, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -211,7 +213,7 @@ public class GestionMaisonI extends JFrame {
 					.addGap(20)
 					.addComponent(lblGestionDesMaisons, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 					.addGap(53)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(54)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 					.addGap(111)
@@ -219,7 +221,7 @@ public class GestionMaisonI extends JFrame {
 						.addComponent(ajouter, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnSupprimer, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnModifier, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(85, Short.MAX_VALUE))
+					.addContainerGap(147, Short.MAX_VALUE))
 		);
 		
 		table = new JTable();

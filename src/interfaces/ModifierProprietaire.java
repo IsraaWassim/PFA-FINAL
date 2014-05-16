@@ -16,7 +16,14 @@ public class ModifierProprietaire extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModifierProprietaire frame = new ModifierProprietaire();
+					String idProprietaire="";
+					String nom="";
+					String prenom="";
+					String cin="";
+					String mail="";
+					String tel="";
+					
+					ModifierProprietaire frame = new ModifierProprietaire(idProprietaire,nom,prenom,cin,mail,tel);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +35,8 @@ public class ModifierProprietaire extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModifierProprietaire() {
+	public ModifierProprietaire(String idProprietaire,String nom, String prenom,String cin, String mail,
+			String tel )  {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 	}

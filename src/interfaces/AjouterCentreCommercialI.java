@@ -238,7 +238,7 @@ public class AjouterCentreCommercialI extends JFrame {
 		
 		 villebox = new JComboBox(new Object[]{});
 		 villebox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		 villebox.setModel(new DefaultComboBoxModel(new String[] {"Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
+		 villebox.setModel(new DefaultComboBoxModel(new String[] {"Sélectionnez une ville","Tunis", "Ariana", "B\u00E9ja", "Ben Arous", "Bizerte", "Gab\u00E8s", "Gafsa", "Jendouba", "Kairouan", "Kasserine", "K\u00E9bili", "Le Kef", "Mahdia", "La Manouba", "M\u00E9denine", "Monastir", "Nabeul", "Sfax", "Sidi Bouzid", "Siliana", "Sousse", "Tataouine", "Tozeur", "Zaghouan"}));
 
 		JLabel label_9 = new JLabel("Code Postal :");
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -312,7 +312,7 @@ public class AjouterCentreCommercialI extends JFrame {
 		
 		 StatutBox = new JComboBox();
 		StatutBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		StatutBox.setModel(new DefaultComboBoxModel(new String[] {"Location", "Achat"}));
+		StatutBox.setModel(new DefaultComboBoxModel(new String[] {"Sélectionnez une Statut","Location", "Achat"}));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -339,7 +339,7 @@ public class AjouterCentreCommercialI extends JFrame {
 							.addGap(49)
 							.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel_1.createSequentialGroup()
-									.addComponent(StatutBox, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+									.addComponent(StatutBox, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
 									.addGap(57)
 									.addComponent(label_10))
 								.addGroup(gl_panel_1.createSequentialGroup()

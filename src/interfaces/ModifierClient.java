@@ -81,7 +81,7 @@ public class ModifierClient extends JDialog {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
+		this.setLocationRelativeTo(null);
 		JLabel lblModifierClient = new JLabel("Modifier Client");
 		lblModifierClient.setIcon(new ImageIcon(ModifierClient.class.getResource("/Images/3-client-icone-6526-96 (2).png")));
 		lblModifierClient.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -167,6 +167,10 @@ public class ModifierClient extends JDialog {
 					txtmail.setText(null);
 					txttel.setText(null);
 					txtdescription.setText(null);
+					
+					ModifierClient.this.hide();
+					GestionClient a1 = new GestionClient();
+					a1.setVisible(true);
 					 
 			}
 		});
